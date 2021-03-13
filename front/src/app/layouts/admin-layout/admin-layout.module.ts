@@ -13,6 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { CollaborateurModule } from 'app/collaborateur/collaborateur.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CollaborateurModule } from 'app/collaborateur/collaborateur.module';
     MatSelectModule,
     MatTooltipModule,
     CollaborateurModule,
+    CommonModule
   ],
   declarations: [
     DashboardComponent,

@@ -1,12 +1,14 @@
 package sofrecom.collaborateur.model;
 
-
+import java.text.SimpleDateFormat;
 
 public class DTOUser {
 	private String fullname;
 	private String email;
 	private String username;
 	private String password;
+	private String matirucule;
+	private SimpleDateFormat dateIntegration;
 	
 	
 	
@@ -41,4 +43,22 @@ public class DTOUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getMatirucule() {
+		return matirucule;
+	}
+
+	public void setMatirucule(String matirucule) {
+		this.matirucule = matirucule;
+	}
+
+	public SimpleDateFormat getDateIntegration() {
+		return dateIntegration;
+	}
+
+	public void setDateIntegration(SimpleDateFormat dateIntegration) {
+		this.dateIntegration = dateIntegration;
+	}
+	
+	
 }

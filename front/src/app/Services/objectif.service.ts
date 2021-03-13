@@ -18,7 +18,6 @@ export class ObjectifService {
  
   //getDataFromUrl
   getObjectifsList(): Observable<any> {
-    const headerss = new HttpHeaders();
     return this.http.get<any[]>(this.baseUrl);
   }
 

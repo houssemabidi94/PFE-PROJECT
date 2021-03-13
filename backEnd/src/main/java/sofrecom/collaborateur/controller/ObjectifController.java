@@ -3,7 +3,6 @@ package sofrecom.collaborateur.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,7 +39,7 @@ public class ObjectifController {
 	JwtTokenUtil jwt;
 
 	@GetMapping("/objectif")
-	public List<Objectif> getObjectifsList(HttpServletRequest request, HttpServletResponse response) {
+	public List<Objectif> getObjectifsList(HttpServletRequest request) {
 		final String requestTokenHeader = request.getHeader("Authorization");
 		String jwtToken = requestTokenHeader.substring(7);
 

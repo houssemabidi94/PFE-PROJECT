@@ -20,13 +20,12 @@ public class ObjectifService implements IObjectifService {
 		return (List<Objectif>) ObjectifRepo.findObjectif(campagneID,userID);
 	}
 
-    @Override
-    public void autoEvaluateObjectif(Objectif objectif) {
-      Objectif obj=ObjectifRepo.findById(objectif.getId());
-      objectif.setCampagne(obj.getCampagne());
-      objectif.setUser(obj.getUser());
-      ObjectifRepo.save(objectif);
-    }
+	@Override
+	public void autoEvaluateObjectif(Objectif objectif) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 

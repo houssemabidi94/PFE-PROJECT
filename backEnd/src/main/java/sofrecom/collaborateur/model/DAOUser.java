@@ -2,12 +2,20 @@ package sofrecom.collaborateur.model;
 
 
 
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -31,8 +39,7 @@ public class DAOUser {
 	@Column(nullable = true)
 	private String matirucule;
 	@Column(nullable = true)
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private SimpleDateFormat dateIntegration;
+	private Date dateIntegration;
 
 	
 //	private DAOUser manager;
@@ -90,6 +97,7 @@ public class DAOUser {
 		this.username = username;
 	}
 
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
@@ -102,11 +110,11 @@ public class DAOUser {
 	public void setMatirucule(String matirucule) {
 		this.matirucule = matirucule;
 	}
-	public SimpleDateFormat getDateIntegration() {
+	public Date getDateIntegration() {
 		return dateIntegration;
 	}
 
-	public void setDateIntegration(SimpleDateFormat dateIntegration) {
+	public void setDateIntegration(Date dateIntegration) {
 		this.dateIntegration = dateIntegration;
 	}
 
