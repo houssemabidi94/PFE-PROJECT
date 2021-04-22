@@ -1,7 +1,5 @@
 package sofrecom.collaborateur.model;
 
-
-
 import java.sql.Date;
 import java.util.List;
 
@@ -17,13 +15,10 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
 @Entity
 @Table(name = "user")
 public class DAOUser {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -37,42 +32,39 @@ public class DAOUser {
 //	@JsonIgnore
 	private String password;
 	@Column(nullable = true)
-	private String matirucule;
+	private String matricule;
 	@Column(nullable = true)
 	private Date dateIntegration;
+	@Column(nullable = true)
+	private long manager_id;
 
-	
-//	private DAOUser manager;
-	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
 	private List<Objectif> ojectifs;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user")
 	private List<Entretien> entretiens;
-	
+
 	@ManyToOne
-    @JoinColumn(name = "idFonction", referencedColumnName = "id")
+	@JoinColumn(name = "idFonction", referencedColumnName = "id")
 	private Fonction fonction;
-	
+
 	@ManyToOne
-    @JoinColumn(name = "idDirection", referencedColumnName = "id")
+	@JoinColumn(name = "idDirection", referencedColumnName = "id")
 	private Direction direction;
-	
 
 	public DAOUser() {
 		super();
 	}
 
-	
 	public DAOUser(String fullname) {
 		super();
 		this.fullname = fullname;
 	}
 
-
 	public long getId() {
 		return id;
 	}
+
 	public String getFullnamee() {
 		return fullname;
 	}
@@ -88,7 +80,7 @@ public class DAOUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -101,15 +93,19 @@ public class DAOUser {
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getMatirucule() {
-		return matirucule;
+
+	public String getMatricule() {
+		return matricule;
 	}
-	public void setMatirucule(String matirucule) {
-		this.matirucule = matirucule;
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
 	}
+
 	public Date getDateIntegration() {
 		return dateIntegration;
 	}
@@ -122,17 +118,21 @@ public class DAOUser {
 		return fullname;
 	}
 
-//	public DAOUser getManager() {
-//		return manager;
-//	}
-//
-//
-//	public void setManager(DAOUser manager) {
-//		this.manager = manager;
-//	}
+	public Fonction getFonction() {
+		return fonction;
+	}
+
+	public void setFonction(Fonction fonction) {
+		this.fonction = fonction;
+	}
+
+	public long getManager_id() {
+		return manager_id;
+	}
+
+	public void setManager_id(long manager_id) {
+		this.manager_id = manager_id;
+	}
 
 
-	
-
-	
 }

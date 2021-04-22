@@ -1,6 +1,6 @@
 package sofrecom.collaborateur.controller;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,30 +12,26 @@ import sofrecom.collaborateur.config.JwtTokenUtil;
 import sofrecom.collaborateur.model.DAOUser;
 import sofrecom.collaborateur.repository.UserRepository;
 import sofrecom.collaborateur.service.IUserService;
+import sofrecom.collaborateur.serviceImpl.UserService;
 
 @RestController
 public class UserController {
 
 	@Autowired
-	IUserService userService;
+	UserService userService;
 	
 	@Autowired
 	JwtTokenUtil jwt;
 	
 	@Autowired
 	UserRepository userRepo;
-
+	
 
 	@GetMapping("profile")
-	public List<DAOUser> getUserByUserID(HttpServletRequest request) {
-		final String requestTokenHeader = request.getHeader("Authorization");
-		String jwtToken = requestTokenHeader.substring(7);
-
-		String email = jwt.getUsernameFromToken(jwtToken);
-
-		long userID = userRepo.getUserId(email);
-
-		List<DAOUser> user = userRepo.findById(userID);
+	public DAOUser getUserByUserID(HttpServletRequest request) {
+		
+		long userId = userService.getCurrentUserId(request);
+		DAOUser user = userRepo.findById(userId).get();
 		return user;
 	}
 	}

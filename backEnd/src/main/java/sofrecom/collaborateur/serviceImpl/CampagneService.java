@@ -75,7 +75,6 @@ public class CampagneService {
 		}
 		if (semester == "S1") {
 			semester = "S2";
-
 		}
 		return semester + "-" + year;
 	}

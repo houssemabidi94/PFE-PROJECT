@@ -1,0 +1,72 @@
+<div class="row">
+        <div class="col-xl-12">
+        <app-card cardTitle="Evaluation des objectifs individuel" [options]="false" blockClass="table-border-style">
+                <div>  
+            <div *ngIf="objectifs.length === 0 ; else other">
+                    <div class="alert alert-warning" role="alert">
+                            Vous n'avez pas des objectifs à evaluer !
+                          </div>
+                          
+                     </div>  
+                     <ng-template #other>
+            <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                    <tr>
+                            <th>     
+                                    #
+                                </th>
+                                <th>     
+                                    Designation
+                                </th>
+                                <th>
+                                    AutoEvaluation
+                                </th>
+                                <th>
+                                    Commentaires
+                                </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            <tr *ngFor="let objectif of objectifs; let i =index">
+                                    <td>
+                                        {{i+1}}
+                                    </td>
+                                    <td>
+                                        {{objectif.designation}}
+                                    </td>
+                                    <td>
+                                            <select (change)="change(objectif)" class="form-control" name={{objectif.autoEvaluation}}{{objectif.designation}} [(ngModel)]="objectif.autoEvaluation">
+                                                <option value="{{objectif.autoEvaluation}}" selected>
+                                                    {{objectif.autoEvaluation}}</option>
+                                                <option value="Performance ameliore">Performance
+                                                    ameliore</option>
+                                                <option value="Zone de conformite">Zone de
+                                                    conformite</option>
+                                                <option value="Objectif dépassé">Objectif
+                                                    dépassé</option>
+                                                <option value="Performance exceptionnelle">
+                                                    Performance exceptionnelle </option>
+                                            </select>
+                                    </td>
+                                    <td>
+                                            <textarea (change)="change(objectif)" class="form-control" placeholder="commentaire" value={{objectif.commentaire}} [(ngModel)]="objectif.commentaire">
+                                             </textarea>
+                                        </td>
+                                
+                                </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </ng-template>
+            </div> 
+       
+              </app-card>
+        </div>
+            <button type="button" (click)="autoEvaluate()" class="btn btn-success mx-auto d-block"><i class="feather icon-check-circle"></i>Valider</button>
+</div>
+
+
+
+
+

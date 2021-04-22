@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'app/models/user';
-import { ObjectifService } from 'app/Services/objectif.service';
-import { UserProfileService } from 'app/Services/user-profile.service';
+import { User } from 'src/models/user';
+import { UserProfileService } from 'src/Services/user-profile.service';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
 
-  user : User[];
+  user : User;
 
   constructor(private userService: UserProfileService) { }
 

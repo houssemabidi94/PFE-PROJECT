@@ -1,0 +1,215 @@
+<h4 class=" text-center font-weight-light text-primary mt-3"> </h4>
+
+<div class="row">
+        <div class="col-xl-12">
+                
+
+                        <div *ngIf="entretient.length === 0 ; else other">
+                                <div class="alert alert-warning" role="alert">
+                                        Vous n'avez pas des EIPs à evaluer !
+                                </div>
+
+                        </div>
+                        <ng-template #other>
+                                <div class="table-responsive">
+
+        <div class="alert alert-secondary alert-dismissible fade show col-6" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <span> <strong><i class="far fa-lightbulb">  Veuillez choisir un Collaborateur pour évaluer ses objectifs .</i></strong></span>
+                      </div>
+                                              
+                                        <p class="mt-2">Liste des EIPs de la compagne en cours</p>
+                                        <table class="table table-hover">
+                                                <thead>
+                                                        <tr class="table-primary">
+                                                                <th>
+                                                                        #
+                                                                </th>
+                                                                <th>
+                                                                        Collaborateur
+                                                                </th>
+                                                                <th>
+                                                                        Compagne
+                                                                </th>
+                                                                <th>
+                                                                        Status
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                        <tr *ngFor="let entretien of entretient; let i =index" style="cursor: pointer;" (click)="getCollaborateur(entretien)" title="Voir plus de détails">
+                                                                <td>
+                                                                        {{i+1}}
+                                                                </td>
+                                                                <td>
+                                                                        {{entretien.user.fullname}}
+                                                                </td>
+                                                                <td>
+                                                                        {{entretien.campagne.idCampagne}}
+                                                                </td>
+                                                                <td>
+                                                                        {{entretien.status}}
+                                                                </td>
+
+                                                        </tr>
+
+                                                </tbody>
+                                        </table>
+                                </div>
+                                <br>
+                                <div class="row col-lg-12 mt-3 border border-dark rounded" *ngIf="user">
+
+                                        <div class="mt-3 col-lg-12">
+                                                <i class="fas fa-bars"> Informations génerales sur le Collaborateur :</i>
+                                        </div>
+
+                                        <div class="row col-lg-12 mt-3">
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <label>
+                                                                        <i class="fas fa-user"> Fullname :</i>
+                                                                </label>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <u class="text-capitalize">{{user.fullname}}</u>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <label>
+                                                                        <i class="fas fa-at"> Email : </i>
+                                                                </label>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <u class="text-capitalize">{{user.email}}</u>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <label>
+                                                                        <i class="fas fa-briefcase"> Fonction : </i>
+                                                                </label>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <u class="text-capitalize">{{user.fonction.libelle}}</u>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <label>
+                                                                        <i class="fas fa-calendar-alt"> Date Intégration :</i>
+                                                                </label>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <u class="text-capitalize">{{user.date_integration}}</u>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <label>
+                                                                        <i class="fas fa-id-card"> Matricule :</i>
+                                                                </label>
+                                                        </div>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                        <div class="form-group">
+                                                                <u class="text-capitalize">{{user.matricule}}</u>
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <br>
+                                        <br>
+
+
+
+                                </div>
+                                <div class="row" *ngIf="user">
+                                        <div class="col-lg-12 grid-margin stretch-card">
+                                                <div class="card">
+                                                        <div class="card-body">
+                                                                <p>Evaluation des objectifs de
+                                                                        <span class="font-weight-bold text-capitalize">{{user.fullname}}</span>
+                                                                </p>
+                                                                <div *ngIf="objectifs.length === 0 ; else other">
+                                                                        <div class="alert alert-warning" role="alert">
+                                                                                Pas d'objectifs à evaluer pour ce collaborateur !
+                                                                        </div>
+
+                                                                </div>
+                                                                <ng-template #other>
+                                                                        <div class="table-responsive">
+                                                                                <table id="mytable" class="table table-dark">
+                                                                                        <thead>
+                                                                                                <tr>
+                                                                                                        <th>
+                                                                                                                Objectif
+                                                                                                        </th>
+                                                                                                        <th>
+                                                                                                                Evaluation
+                                                                                                        </th>
+                                                                                                        <th>
+                                                                                                                Commentaire
+                                                                                                        </th>
+                                                                                                </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                                <tr *ngFor="let objectif of objectifs ; let i = index">
+                                                                                                        <td>
+                                                                                                                {{objectif.designation}}
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                                <select (change)="change(objectif)" class="form-control" name="autoEvaluation" [(ngModel)]="objectif.autoEvaluation">
+                                                                                                                        <option value={{objectif.autoEvaluation}} selected>
+                                                                                                                                {{objectif.autoEvaluation}}</option>
+                                                                                                                        <option value="Performance à amelioré">Performance
+                                                                                                                                à
+                                                                                                                                ameliore
+                                                                                                                        </option>
+                                                                                                                        <option value="Zone de conformite">Zone
+                                                                                                                                de
+                                                                                                                                conformite
+                                                                                                                        </option>
+                                                                                                                        <option value="Objectif dépassé">Objectif
+                                                                                                                                dépassé
+                                                                                                                        </option>
+                                                                                                                        <option value="Performance exceptionnelle">
+                                                                                                                                Performance exceptionnelle </option>
+                                                                                                                </select>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                                <textarea (change)="change(objectif)" class="form-control" placeholder="commentaire" name="commentaire" [(ngModel)]="objectif.commentaire">
+                                                                                                </textarea>
+                                                                                                        </td>
+                                                                                                </tr>
+                                                                                        </tbody>
+                                                                                </table>
+                                                                        </div>
+                                                                </ng-template>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <br>
+                                <br>
+                        </ng-template>
+                        <div class="alert alert-success" role="alert" *ngIf="success">
+                                        This is a success alert—check it out!
+                                      </div>
+                
+        </div>
+</div>
+
+
+<button mat-button matStepperNext (click)="onSubmit()">Suivant</button>

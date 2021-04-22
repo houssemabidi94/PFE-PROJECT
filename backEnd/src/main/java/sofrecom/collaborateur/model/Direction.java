@@ -20,7 +20,7 @@ public class Direction {
 	private long id;
 	
 	@Column(nullable = true)
-	private String test;
+	private String directeur;
 	
 	@OneToMany(mappedBy="direction")
 	private List<DAOUser> users;
@@ -33,20 +33,12 @@ public class Direction {
 		this.id = id;
 	}
 
-	public String getTest() {
-		return test;
+	public String getDirecteur() {
+		return directeur;
 	}
 
-	public void setTest(String test) {
-		this.test = test;
+	public void setDirecteur(String directeur) {
+		this.directeur = directeur;
 	}
-
-	@Override
-	public String toString() {
-		return "Direction [id=" + id + ", test=" + test + ", users=" + users + "]";
-	}
-	
-	
-	
 
 }

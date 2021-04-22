@@ -7,7 +7,7 @@ public class DTOUser {
 	private String email;
 	private String username;
 	private String password;
-	private String matirucule;
+	private String matricule;
 	private SimpleDateFormat dateIntegration;
 	
 	
@@ -44,12 +44,12 @@ public class DTOUser {
 		this.password = password;
 	}
 
-	public String getMatirucule() {
-		return matirucule;
+	public String getMatricule() {
+		return matricule;
 	}
 
-	public void setMatirucule(String matirucule) {
-		this.matirucule = matirucule;
+	public void setMatricule(String matirucule) {
+		this.matricule = matirucule;
 	}
 
 	public SimpleDateFormat getDateIntegration() {

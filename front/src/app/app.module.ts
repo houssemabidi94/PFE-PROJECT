@@ -1,51 +1,80 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
-
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './theme/shared/shared.module';
 import { AppComponent } from './app.component';
-
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminComponent } from './theme/layout/admin/admin.component';
+import { AuthComponent } from './theme/layout/auth/auth.component';
+import { NavigationComponent } from './theme/layout/admin/navigation/navigation.component';
+import { NavLogoComponent } from './theme/layout/admin/navigation/nav-logo/nav-logo.component';
+import { NavContentComponent } from './theme/layout/admin/navigation/nav-content/nav-content.component';
+import {NavigationItem} from './theme/layout/admin/navigation/navigation';
+import { NavGroupComponent } from './theme/layout/admin/navigation/nav-content/nav-group/nav-group.component';
+import { NavCollapseComponent } from './theme/layout/admin/navigation/nav-content/nav-collapse/nav-collapse.component';
+import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/nav-item/nav-item.component';
+import { NavBarComponent } from './theme/layout/admin/nav-bar/nav-bar.component';
+import {ToggleFullScreenDirective} from './theme/shared/full-screen/toggle-full-screen';
+import {NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import { NavLeftComponent } from './theme/layout/admin/nav-bar/nav-left/nav-left.component';
+import { NavSearchComponent } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
+import { NavRightComponent } from './theme/layout/admin/nav-bar/nav-right/nav-right.component';
+import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuardService } from 'src/Services/authguard.service';
+import { AuthenticationService } from 'src/Services/authentication.service';
+import { BasicAuthHttpInterceptorService } from 'src/Services/basic-auth-http-interceptor.service';
+import { AutoEvaluationComponent } from './auto-evaluation/auto-evaluation.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from './table-list/table-list.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthComponent } from './auth/auth.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { ObjectifService } from 'app/Services/objectif.service';
-import { AuthGuardService } from 'app/Services/authguard.service';
-import { AuthenticationService } from 'app/Services/authentication.service';
-import { BasicAuthHttpInterceptorService } from 'app/Services/basic-auth-http-interceptor.service';
-import { UserProfileService } from 'app/Services/user-profile.service';
-import { CommonModule } from '@angular/common';
-
+import { ListeEipsComponent } from './liste-eips/liste-eips.component';
+import { UserEvaluationCardComponent } from './user-evaluation-card/user-evaluation-card.component';
+import { ManagerEvaluationsModule } from 'src/app/manager-evaluations/manager-evaluations.module';
+import { SharedServicesService } from 'src/Services/shared-services.service';
+ 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    RouterModule,
-    AppRoutingModule,
-    CommonModule
-  ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    AdminComponent,
     AuthComponent,
-    NotfoundComponent
+    NavigationComponent,
+    NavLogoComponent,
+    NavContentComponent,
+    NavGroupComponent,
+    NavCollapseComponent,
+    NavItemComponent,
+    NavBarComponent,
+    ToggleFullScreenDirective,
+    NavLeftComponent,
+    NavSearchComponent,
+    NavRightComponent,
+    ConfigurationComponent,
+    AutoEvaluationComponent,
+    UserProfileComponent,
+    ListeEipsComponent,
+    UserEvaluationCardComponent,
+    
+    ],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    NgbDropdownModule,
+    NgbTooltipModule,
+    NgbButtonsModule,
+    NgbTabsetModule,
+    FormsModule,
+    HttpClientModule,
+    ManagerEvaluationsModule
+    
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: BasicAuthHttpInterceptorService,
-      multi: true
-    },AuthGuardService,HttpClientModule,AuthenticationService,ObjectifService,UserProfileService],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: BasicAuthHttpInterceptorService,
+    multi: true
+  },AuthGuardService,HttpClientModule,AuthenticationService,NavigationItem,SharedServicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -99,6 +99,26 @@ public class Objectif {
 		return "Objectif [id=" + id + ", designation=" + designation + ", evaluation=" + evaluation + ", commentaire="
 				+ commentaire + ", autoEvaluation=" + autoEvaluation + "]";
 	}
+
+
+	public DAOUser getUser() {
+		return user;
+	}
+
+
+	public void setUser(DAOUser user) {
+		this.user = user;
+	}
+
+
+	public Campagne getCampagne() {
+		return campagne;
+	}
+
+
+	public void setCampagne(Campagne campagne) {
+		this.campagne = campagne;
+	}
 	
 	
 }
