@@ -14,12 +14,12 @@ public class FonctionService {
 	@Autowired
 	private FonctionRepository fonctionRepository;
 
-	@Bean
-	InitializingBean setFonctions() {
-		return () -> {
-			fonctionRepository.save(new Fonction(1,"collaborateur"));
-			fonctionRepository.save(new Fonction(2,"manager"));
-			fonctionRepository.save(new Fonction(3,"directeur"));
-		};
-	}
+//	@Bean
+//	InitializingBean setFonctions() {
+//		return () -> {
+//			fonctionRepository.save(new Fonction(1,"collaborateur"));
+//			fonctionRepository.save(new Fonction(2,"manager"));
+//			fonctionRepository.save(new Fonction(3,"directeur"));
+//		};
+//	}
 }

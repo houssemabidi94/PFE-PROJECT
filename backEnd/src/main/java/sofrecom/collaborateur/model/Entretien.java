@@ -1,6 +1,7 @@
 package sofrecom.collaborateur.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Value;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -21,6 +27,8 @@ public class Entretien {
 	private long id;
 	@Column(nullable = true)	
 	private Date date;
+	
+	
 	@Column(nullable = true)
 	private Status status;
 	
@@ -44,9 +52,29 @@ public class Entretien {
     @JoinColumn(name = "idCampagne", referencedColumnName = "idCampagne")
 	private Campagne campagne;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "entretien")
+	private List<Objectif> objectifs;
+	
 	public Entretien() {
 		super();
 	}
+
+	
+	
+	public Entretien(DAOUser user, Campagne campagne) {
+		super();
+		this.user = user;
+		this.campagne = campagne;
+	}
+
+
+
+	public Entretien(long id) {
+		this.id = id;
+	}
+
+
 
 	public long getId() {
 		return id;
@@ -129,11 +157,14 @@ public class Entretien {
 		this.campagne = campagne;
 	}
 
-	@Override
-	public String toString() {
-		return "Entretien [id=" + id + ", date=" + date + ", status=" + status + ", projet=" + projet + ", points="
-				+ points + ", axes=" + axes + ", formations=" + formations + ", certifications=" + certifications
-				+ ", user=" + user + ", compagne=" + campagne + "]";
+	public List<Objectif> getObjectifs() {
+		return objectifs;
 	}
+
+	public void setObjectifs(List<Objectif> objectifs) {
+		this.objectifs = objectifs;
+	}
+
+
 	
 }

@@ -69,13 +69,10 @@ public class TestController {
 
 		String email = jwt.getUsernameFromToken(jwtToken);
 
-		long userID = userRepo.getUserId(email);
+		long managerID = userRepo.getUserId(email);
 
-		List<Long> users = userRepo.getUsersIdByManagerId(userID);
+		List<Long> users = userRepo.getUsersIdByManagerId(managerID);
 		return users;
 	}
-	@GetMapping("findCollaborateurByEntretien/{idEntretien}")
-	public DAOUser getCollaborateurByEntretien(@PathVariable("idEntretien") long id) {
-		return entretienService.getCollaborateurByEntretien(id);
-	}
+
 }

@@ -2,6 +2,7 @@ package sofrecom.collaborateur.model;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -35,11 +41,9 @@ public class DAOUser {
 	private String matricule;
 	@Column(nullable = true)
 	private Date dateIntegration;
-	@Column(nullable = true)
-	private long manager_id;
 
-	@OneToMany(mappedBy = "user")
-	private List<Objectif> ojectifs;
+	@OneToOne
+	private DAOUser manager;
 
 	@OneToMany(mappedBy = "user")
 	private List<Entretien> entretiens;
@@ -52,6 +56,9 @@ public class DAOUser {
 	@JoinColumn(name = "idDirection", referencedColumnName = "id")
 	private Direction direction;
 
+	@OneToMany(mappedBy="user")
+	private List<Evaluation> evaluations;
+	
 	public DAOUser() {
 		super();
 	}
@@ -126,13 +133,14 @@ public class DAOUser {
 		this.fonction = fonction;
 	}
 
-	public long getManager_id() {
-		return manager_id;
+	public DAOUser getManager() {
+		return manager;
 	}
 
-	public void setManager_id(long manager_id) {
-		this.manager_id = manager_id;
+	public void setManager(DAOUser manager) {
+		this.manager = manager;
 	}
+
 
 
 }

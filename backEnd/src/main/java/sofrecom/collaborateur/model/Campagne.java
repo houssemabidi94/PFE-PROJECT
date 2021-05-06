@@ -19,9 +19,6 @@ public class Campagne {
 	private Boolean actif;
 
 	@OneToMany(mappedBy = "campagne")
-	private List<Objectif> objectifs;
-
-	@OneToMany(mappedBy = "campagne")
 	private List<Entretien> entretiens;
 
 	public Campagne() {
@@ -32,6 +29,10 @@ public class Campagne {
 		super();
 		this.idCampagne = id;
 		this.actif = actif;
+	}
+
+	public Campagne(String previousSemester) {
+		this.idCampagne = previousSemester;
 	}
 
 	public Boolean getActif() {

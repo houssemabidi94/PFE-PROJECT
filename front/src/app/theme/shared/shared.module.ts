@@ -2,17 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {AlertModule, BreadcrumbModule, CardModule, ModalModule} from './components';
-import {DataFilterPipe} from './components/data-table/data-filter.pipe';
-import {TodoListRemoveDirective} from './components/todo/todo-list-remove.directive';
-import {TodoCardCompleteDirective} from './components/todo/todo-card-complete.directive';
+import {BreadcrumbModule, CardModule} from './components';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {ClickOutsideModule} from 'ng-click-outside';
-import {SpinnerComponent} from './components/spinner/spinner.component';
 
 import 'hammerjs';
 import 'mousetrap';
 import {GalleryModule} from '@ks89/angular-modal-gallery';
+import { SpinnerComponent } from 'src/app/theme/shared/components/spinner/spinner.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -24,10 +21,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     FormsModule,
     ReactiveFormsModule,
-    AlertModule,
     CardModule,
     BreadcrumbModule,
-    ModalModule,
     GalleryModule.forRoot(),
     ClickOutsideModule
   ],
@@ -36,21 +31,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     FormsModule,
     ReactiveFormsModule,
-    AlertModule,
     CardModule,
     BreadcrumbModule,
-    ModalModule,
     GalleryModule,
-    DataFilterPipe,
-    TodoListRemoveDirective,
-    TodoCardCompleteDirective,
     ClickOutsideModule,
     SpinnerComponent
+    
   ],
   declarations: [
-    DataFilterPipe,
-    TodoListRemoveDirective,
-    TodoCardCompleteDirective,
     SpinnerComponent
   ],
   providers: [

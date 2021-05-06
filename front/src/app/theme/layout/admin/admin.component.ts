@@ -1,6 +1,9 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {DattaConfig} from '../../../app-config';
 import {Location} from '@angular/common';
+import { UserProfileService } from 'src/Services/user-profile.service';
+import { User } from 'src/models/user';
+import { Navigation, NavigationItem } from 'src/app/theme/layout/admin/navigation/navigation';
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +16,9 @@ export class AdminComponent implements OnInit {
   public navCollapsedMob: boolean;
   public windowWidth: number;
 
-  constructor(private zone: NgZone, private location: Location) {
+  
+  constructor(private zone: NgZone, private location: Location )
+   {
     this.dattaConfig = DattaConfig.config;
 
     let current_url = this.location.path();
@@ -28,10 +33,18 @@ export class AdminComponent implements OnInit {
     this.windowWidth = window.innerWidth;
     this.navCollapsed = (this.windowWidth >= 992) ? this.dattaConfig['collapse-menu'] : false;
     this.navCollapsedMob = false;
+    
+  
   }
 
-  ngOnInit() {
-  }
+   
+  
+    ngOnInit() {
+      
+      }
+  
+  
+  
 
   navMobClick() {
     if (this.navCollapsedMob && !(document.querySelector('app-navigation.pcoded-navbar').classList.contains('mob-open'))) {

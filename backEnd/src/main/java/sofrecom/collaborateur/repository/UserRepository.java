@@ -24,6 +24,6 @@ public interface UserRepository extends JpaRepository<DAOUser, Long> {
 	@Query("select u.id from DAOUser u where u.email =:email")
 	public long getUserId(@Param("email") String email);
 	
-	@Query("select u.id from DAOUser u where u.manager_id =:managerID")
+	@Query("select u.id from DAOUser u join u.manager m where m.id =:managerID")
 	public List<Long> getUsersIdByManagerId(@Param("managerID") long managerID);
 }

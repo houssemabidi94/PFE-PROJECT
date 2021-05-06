@@ -46,12 +46,6 @@ public class EntretienController {
 	@Autowired
 	CampagneService cs;
 	
-	@GetMapping("EIPs/{idManager}")
-	public List<Entretien> getEIPsByManager(@PathVariable("idManager") long id) {
-		return entretienService.getEIPsByManager(id);
-	}
-	
-
 	
 	@GetMapping("findEntretienByCollaborateur/{idCollaborateur}")
 	public Entretien getEntretienByCollaborateur(@PathVariable("idCollaborateur") long id) {
@@ -72,14 +66,19 @@ public class EntretienController {
 
 		long userId = userService.getCurrentUserId(request);
 		List<Long> users = userRepo.getUsersIdByManagerId(userId);
-		String key = cs.getSemesterAndYear();
+		String key = cs.getPreviousSemester();
 		
 		List<Entretien> ent = new ArrayList<Entretien>();
 		
 		for(long userID : users) {
-			ent.addAll(entretientRepo.findEntretien(userID,key)); 
+			ent.addAll(entretientRepo.findCollabsEntretien(userID,key)); 
 		}
 		return ent;
+	}
+	
+	@GetMapping("findCollaborateurByEntretien/{idEntretien}")
+	public DAOUser getCollaborateurByEntretien(@PathVariable("idEntretien") long id) {
+		return entretienService.getCollaborateurByEntretien(id);
 	}
 }
 

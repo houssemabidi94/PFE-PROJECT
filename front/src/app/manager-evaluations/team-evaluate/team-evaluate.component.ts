@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/models/user';
 import { Entretien } from 'src/models/entretien';
 import { FormBuilder } from '@angular/forms';
@@ -6,6 +6,9 @@ import { EntretienService } from 'src/Services/entretien.service';
 import { Objectif } from 'src/models/objectif';
 import { ObjectifService } from 'src/Services/objectif.service';
 import { SharedServicesService } from 'src/Services/shared-services.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-team-evaluate',
@@ -14,12 +17,24 @@ import { SharedServicesService } from 'src/Services/shared-services.service';
 })
 export class TeamEvaluateComponent implements OnInit {
 
-  user: User;
+  user: User ;
   entretient: Entretien[] = [];
   collaborateur = false;
   objectifs: Objectif[] = [];
   objectifList: Array<Objectif> = [];
   success = false;
+  evaluations = [
+		{ "id": 1, "designation": "Performance a ameliore"},
+		{ "id": 2, "designation": "Zone de conformite"},
+		{ "id": 3, "designation": "Objectif dépassé"},
+		{ "id": 4, "designation": "Performance exceptionnelle"}
+	];
+	displayedColumns: string[] = ['position', 'designation','autoEvaluation','evaluation','commentaire'];
+	dataSource: MatTableDataSource<Objectif>;
+	
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  
 
   constructor(private _formBuilder: FormBuilder,
     private es: EntretienService,
@@ -28,24 +43,20 @@ export class TeamEvaluateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getListEips();
+    this.sharedServicesService.getValue().subscribe(value=>{
+      this.user = value;
+      this.findCollabObjectif(this.user.id);
+    });
+    
   }
 
-  getListEips() {
-    this.es.getEntretienList().subscribe(data =>
-      this.entretient = data
-    )
-  }
   findCollabObjectif(id) {
-    this.objectifService.getCollaborateurObjectifsForManager(id).subscribe(data => {
-      this.objectifs = data
+    this.objectifService.getCollaborateurObjectifsForManager(this.user.id).subscribe(data => {
+      this.objectifs = data;
+      this.dataSource = new MatTableDataSource(this.objectifs);
+      this.dataSource.paginator = this.paginator;
+			this.dataSource.sort = this.sort;
     });
-  }
-  getCollaborateur(entretien) {
-    this.es.getCollaborateurByEntretien(entretien).subscribe(data => {
-      this.user = data,
-        this.findCollabObjectif(this.user.id)
-    });   
   }
 
   change(objectif: Objectif) {
@@ -57,7 +68,7 @@ export class TeamEvaluateComponent implements OnInit {
       for (let i = 0; i < this.objectifList.length; i++) {
         if (this.objectifList[i] == objectif) {
           flag = true;
-          this.objectifList[i].evaluation = objectif.autoEvaluation;
+          this.objectifList[i].evaluation = objectif.evaluation;
           this.objectifList[i].commentaire = objectif.commentaire;
         }
         if (flag == false) {
@@ -68,7 +79,6 @@ export class TeamEvaluateComponent implements OnInit {
   }
 
   onSubmit() {                
-        this.success = false;
         this.evaluate();
         this.sharedServicesService.setValue(this.user);
   }
@@ -82,6 +92,13 @@ export class TeamEvaluateComponent implements OnInit {
     }
 
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+	}
 
 }

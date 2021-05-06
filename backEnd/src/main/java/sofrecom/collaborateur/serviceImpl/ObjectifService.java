@@ -42,25 +42,23 @@ public class ObjectifService implements IObjectifService {
 	@Override
 	public void autoEvaluateObjectif(Objectif objectif) {
 		Objectif obj = ObjectifRepo.findById(objectif.getId()).get();
-		objectif.setCampagne(obj.getCampagne());
-		objectif.setUser(obj.getUser());
+		objectif.setEntretien(obj.getEntretien());
 		ObjectifRepo.save(objectif);
 		
 	}
-
+	
 	@Override
 	public void newObjectif(Objectif objectif, long id) {
 		DAOUser user = UserRepo.findById(id).get();
-		objectif.setUser(user);
 		
 		String key = campagneService.getNextSemester();
 		
 		Campagne campagne = campagneRepository.findById(key).get();
 		
-		objectif.setCampagne(campagne);
-		
 		Entretien entretien = EntretientRepo.findEntretienByUserId(id);
 		entretien.setStatus(Status.FIXATION_OBJECTIFS);
+		
+		objectif.setEntretien(entretien);
 		EntretientRepo.save(entretien);
 		ObjectifRepo.save(objectif);
 		
@@ -75,16 +73,18 @@ public class ObjectifService implements IObjectifService {
 		return obj;
 
 	}
+	
 	@Override
 	public void evaluateObjectif(Objectif objectif) {
 		Objectif obj = ObjectifRepo.findByIdObjectif(objectif.getId());
-		objectif.setCampagne(obj.getCampagne());
-		objectif.setUser(obj.getUser());
 		objectif.setAutoEvaluation(obj.getAutoEvaluation());
-		Entretien entretien = EntretientRepo.findEntretienByUserId(obj.getUser().getId());
+		objectif.setCommentaire(obj.getCommentaire());
+		objectif.setDesignation(obj.getDesignation());
+		objectif.setEntretien(obj.getEntretien());
+		Entretien entretien = EntretientRepo.findEntretien(obj.getEntretien().getId());
 		entretien.setStatus(Status.EVALUATION);
 		EntretientRepo.save(entretien);
 		ObjectifRepo.save(objectif);
 	}
-	
+
 }

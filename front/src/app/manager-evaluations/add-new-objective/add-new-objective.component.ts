@@ -21,6 +21,7 @@ export class AddNewObjectiveComponent implements OnInit {
   obj: Objectif = new Objectif();
 
   user : User;
+  success = false;
 
   constructor(private _fb: FormBuilder,
   private readonly sharedServicesService : SharedServicesService,
@@ -28,8 +29,9 @@ private objectifService : ObjectifService) { }
 
   ngOnInit() {
 
-    this.obj = new Objectif();
-    this.newObjectifList.push(this.obj);
+    this.invoiceForm = this._fb.group({
+      itemRows: this._fb.array([this.initItemRows()])
+    });
     
     this.sharedServicesService.getValue().subscribe(value=>{
       this.user = value;
@@ -42,7 +44,7 @@ private objectifService : ObjectifService) { }
 
   initItemRows() {
     this.obj = new Objectif();
-			this.newObjectifList.push(this.obj);
+      this.newObjectifList.push(this.obj);
   }
 
   addNewRow() {
@@ -50,16 +52,17 @@ private objectifService : ObjectifService) { }
 			this.newObjectifList.push(this.obj);
   }
 
-  deleteRow(index: number) {
-    this.formArr.removeAt(index);
+  deleteRow(d) {
+    const index = this.newObjectifList.indexOf(d);
+    this.newObjectifList.splice(index, 1);
   }
 
   onSubmit(){
     for (let i = 0; i < this.newObjectifList.length; i++) {
       
-        this.objectifService.saveNewObjectif(this.newObjectifList[i], this.user.id).subscribe();
-        console.log("saved");      
+        this.objectifService.saveNewObjectif(this.newObjectifList[i], this.user.id).subscribe();      
     }
+    this.success = true;
   }
 	addNew(objectif: Objectif) {
 		this.newObjectif = objectif;

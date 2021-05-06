@@ -1,21 +1,13 @@
 <app-card cardTitle="Mon equipe EIPs" [options]="false" blockClass="table-border-style">
 <mat-horizontal-stepper labelPosition="bottom" [linear]="isLinear" #stepper>
-        <mat-step label="Evaluation">
-                <form>
-                  <app-team-evaluate></app-team-evaluate>
-          </form>
-        </mat-step>
-        <mat-step  label="Fixation des nouveaux objectifs">
-          <form>
+    <mat-step  label="Evaluation">
+            <app-team-evaluate></app-team-evaluate>
+      </mat-step>
+        <mat-step label="Fixation des nouveaux objectifs">
               <app-add-new-objective></app-add-new-objective>
-          </form>
         </mat-step>
         <mat-step label="Evaluation des compétences">
-          <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
+            <app-evaluation-competence></app-evaluation-competence>
         </mat-step>
         <mat-step label="Projet Professionel">
                 <p>You are now done.</p>

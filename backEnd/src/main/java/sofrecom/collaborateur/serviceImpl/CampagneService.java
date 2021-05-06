@@ -16,15 +16,15 @@ public class CampagneService {
 	@Autowired
 	private CampagneRepository campagneRepository;
 
-	@Bean
-	InitializingBean setCampagne() {
-		return () -> {
-			campagneRepository.updateActifStatus();
-			campagneRepository.save(new Campagne(getPreviousSemester(), false));
-			campagneRepository.save(new Campagne(getSemesterAndYear(), true));
-			campagneRepository.save(new Campagne(getNextSemester(), false));
-		};
-	}
+//	@Bean
+//	InitializingBean setCampagne() {
+//		return () -> {
+//			campagneRepository.updateActifStatus();
+//			campagneRepository.save(new Campagne(getPreviousSemester(), false));
+//			campagneRepository.save(new Campagne(getSemesterAndYear(), true));
+//			campagneRepository.save(new Campagne(getNextSemester(), false));
+//		};
+//	}
 
 	public int getCurrentYear() {
 		Calendar cal = Calendar.getInstance();

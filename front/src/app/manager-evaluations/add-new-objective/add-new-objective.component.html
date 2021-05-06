@@ -1,86 +1,6 @@
-<div *ngIf="!user;else other" class="mt-3">
-        <div class="alert alert-warning" role="alert">
-                Vous n'avez pas choisie un Collobaorateur !
-        </div>
-</div>
-<ng-template #other>
-<div class="row col-lg-12 mt-3 border border-dark rounded">
-
-    <div class="mt-3 col-lg-12">
-        <i class="fas fa-bars"> Informations génerales sur le Collaborateur :</i>
-    </div>
-
-    <div class="row col-lg-12 mt-3">
-        <div class="col-xl-3">
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-user"> Fullname :</i>
-                </label>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <u class="text-capitalize">{{user.fullname}}</u>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-at"> Email : </i>
-                </label>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <u class="text-capitalize">{{user.email}}</u>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-briefcase"> Fonction : </i>
-                </label>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <u class="text-capitalize">{{user.fonction.libelle}}</u>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-calendar-alt"> Date Intégration :</i>
-                </label>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <u class="text-capitalize">{{user.date_integration}}</u>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-id-card"> Matricule :</i>
-                </label>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="form-group">
-                <u class="text-capitalize">{{user.matricule}}</u>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-
-
-</div>
-
-
+<app-user-profile-card></app-user-profile-card>
+<div *ngIf="user">
+        
 <form class="mt-5">
     <div>
 
@@ -109,7 +29,22 @@
     </div>
 
 </form>
-</ng-template>
+<div class="alert alert-success alert-dismissible fade show col-12" role="alert" *ngIf="success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+        </button>
+        <span>
+                <strong>
+                        <i class="fas fa-thumbs-up"> Les objectifs sont ajoutés avec success !</i>
+                </strong>
+        </span>
+</div>
+
+<div class="col-12">
+        <button type="button" (click)="onSubmit()" class="btn btn-success mx-auto d-block">
+                <i class="feather icon-check-circle"></i>Valider</button>
+</div>
+</div>
 
 <div>
         <button mat-button matStepperPrevious>Back</button>

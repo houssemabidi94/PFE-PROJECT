@@ -39,6 +39,10 @@ public class Fonction {
 		this.libelle = libelle;
 	}
 
+	public Fonction(long id) {
+		this.id = id;
+	}
+
 	public long getId() {
 		return id;
 	}

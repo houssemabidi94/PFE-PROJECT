@@ -1,34 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Objectif } from 'src/models/objectif';
 import { ObjectifService } from 'src/Services/objectif.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-auto-evaluation',
   templateUrl: './auto-evaluation.component.html',
   styleUrls: ['./auto-evaluation.component.scss']
 })
-export class AutoEvaluationComponent implements OnInit {
-  objectifs: Objectif[];
+export class AutoEvaluationComponent implements  AfterViewInit {
+
+  objectifs: Array<Objectif> = [];
 	tempList: Array<Objectif> = [];
 	submitted = false;
-  constructor(private objectifService: ObjectifService) { }
+	evaluations = [
+		{ "id": 1, "designation": "Performance a ameliore"},
+		{ "id": 2, "designation": "Zone de conformite"},
+		{ "id": 3, "designation": "Objectif dépassé"},
+		{ "id": 4, "designation": "Performance exceptionnelle"}
+	];
+	//Mat table
+	displayedColumns: string[] = ['position', 'designation','autoEvaluation','commentaire'];
+	dataSource: MatTableDataSource<Objectif>;
+	
 
-  ngOnInit(): void {
-    this.getAllObjectifs();
-  }
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
+	
+  constructor(private objectifService: ObjectifService) {
+		
+		this.getAllObjectifs();
+	 }
+	ngAfterViewInit() {
+
+	}
 	getAllObjectifs() {
-		this.objectifService.getObjectifsList().subscribe(data => 
+		
+		this.objectifService.getObjectifsList().subscribe(data => {
 			this.objectifs = data,
-		);
+			this.dataSource = new MatTableDataSource(this.objectifs);
+      this.dataSource.paginator = this.paginator;
+			this.dataSource.sort = this.sort;
+		});
   }
   autoEvaluate() {
-		console.log("in auto evaluate method ");
 		for (let i = 0; i < this.tempList.length; i++) {
 			console.log("saving ...");
 			this.objectifService.saveObjectif(this.tempList[i]).subscribe();
 		}
-  }
-  onSubmit() {
 		this.submitted = true;
   }
   change(objectif: Objectif) {
@@ -51,5 +73,21 @@ export class AutoEvaluationComponent implements OnInit {
 			}
 		}
 	}
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+	}
+	
+
+  form = new FormGroup({
+    supName: new FormControl()
+	});
+
+
+
 
 }

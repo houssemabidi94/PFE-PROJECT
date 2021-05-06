@@ -1,4 +1,5 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
+
 
 export interface NavigationItem {
   id: string;
@@ -25,7 +26,7 @@ export interface Navigation extends NavigationItem {
   children?: NavigationItem[];
 }
 
-const NavigationItems = [
+const NavigationItems   = [
   {
     id: 'navigation',
     title: 'Navigation',
@@ -42,79 +43,38 @@ const NavigationItems = [
       }
     ]
   },
-  /**{
-    id: 'Evaluation',
-    title: 'Evaluation',
-    type: 'group',
-    icon: 'icon-ui',
-    children: [
-      {
-        id: 'basic',
-        title: 'Component',
-        type: 'collapse',
-        icon: 'feather icon-box',
-        children: [
-          {
-            id: 'button',
-            title: 'Button',
-            type: 'item',
-            url: '/basic/button'
-          },
-          {
-            id: 'badges',
-            title: 'Badges',
-            type: 'item',
-            url: '/basic/badges'
-          },
-          {
-            id: 'breadcrumb-pagination',
-            title: 'Breadcrumb & Pagination',
-            type: 'item',
-            url: '/basic/breadcrumb-paging'
-          },
-          {
-            id: 'collapse',
-            title: 'Collapse',
-            type: 'item',
-            url: '/basic/collapse'
-          },
-          {
-            id: 'tabs-pills',
-            title: 'Tabs & Pills',
-            type: 'item',
-            url: '/basic/tabs-pills'
-          },
-          {
-            id: 'typography',
-            title: 'Typography',
-            type: 'item',
-            url: '/basic/typography'
-          }
-        ]
-      }
-    ]
-  },  */
+ 
   {
     id: 'forms',
     title: 'Evaluation',
     type: 'group',
     icon: 'icon-group',
+    hidden : true,
     children: [
       {
-        id: 'forms-element',
+        id: 'Auto Evaluation',
         title: 'Auto Evaluation',
         type: 'item',
         url: '/auto-evaluation',
         classes: 'nav-item',
-        icon: 'feather icon-file-text'
+        icon: 'feather icon-list'
       },
+    ]
+  },
+  {
+    id: 'Manager Evaluation',
+    title: 'Manager Evaluation',
+    type: 'group',
+    icon: 'icon-group',
+    hidden : true,
+    children: [
       {
-        id: 'tables',
-        title: 'Tables',
+        id: 'Evaluation',
+        title: 'Evaluation',
         type: 'item',
-        url: '/tables/bootstrap',
+        url: '/evaluation',
         classes: 'nav-item',
-        icon: 'feather icon-server'
+        icon: 'feather icon-file'
       },
       {
         id: 'eips',
@@ -122,11 +82,19 @@ const NavigationItems = [
         type: 'item',
         url: '/eips',
         classes: 'nav-item',
-        icon: 'feather icon-sidebar',
-        role:'Manager'
+        icon: 'feather icon-grid',
       }
     ]
   },
+];
+
+@Injectable()
+export class NavigationItem{
+  get() {
+    return NavigationItems;
+  } 
+}
+
 /**{
     id: 'chart-maps',
     title: 'Chart & Maps',
@@ -201,12 +169,56 @@ const NavigationItems = [
         external: true
       }
     ]
-  } */
-];
-
-@Injectable()
-export class NavigationItem {
-  get() {
-    return NavigationItems;
-  } 
-}
+  }
+   /**{
+    id: 'Evaluation',
+    title: 'Evaluation',
+    type: 'group',
+    icon: 'icon-ui',
+    children: [
+      {
+        id: 'basic',
+        title: 'Component',
+        type: 'collapse',
+        icon: 'feather icon-box',
+        children: [
+          {
+            id: 'button',
+            title: 'Button',
+            type: 'item',
+            url: '/basic/button'
+          },
+          {
+            id: 'badges',
+            title: 'Badges',
+            type: 'item',
+            url: '/basic/badges'
+          },
+          {
+            id: 'breadcrumb-pagination',
+            title: 'Breadcrumb & Pagination',
+            type: 'item',
+            url: '/basic/breadcrumb-paging'
+          },
+          {
+            id: 'collapse',
+            title: 'Collapse',
+            type: 'item',
+            url: '/basic/collapse'
+          },
+          {
+            id: 'tabs-pills',
+            title: 'Tabs & Pills',
+            type: 'item',
+            url: '/basic/tabs-pills'
+          },
+          {
+            id: 'typography',
+            title: 'Typography',
+            type: 'item',
+            url: '/basic/typography'
+          }
+        ]
+      }
+    ]
+  },  */

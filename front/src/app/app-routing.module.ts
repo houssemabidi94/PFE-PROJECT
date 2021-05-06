@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
-import { AuthComponent } from './theme/layout/auth/auth.component';
 import { AuthGuardService } from 'src/Services/authguard.service';
 import { AutoEvaluationComponent } from 'src/app/auto-evaluation/auto-evaluation.component';
 import { UserProfileComponent } from 'src/app/user-profile/user-profile.component';
-import { ListeEipsComponent } from 'src/app/liste-eips/liste-eips.component';
-import { TeamEvaluateComponent } from 'src/app/manager-evaluations/team-evaluate/team-evaluate.component';
 import { ManagerEvaluationsComponent } from 'src/app/manager-evaluations/manager-evaluations.component';
+import { AuthLoginComponent } from 'src/app/auth-login/auth-login.component';
+import { HomeComponent } from 'src/app/home/home.component';
+
+import { CollabEvaluationComponent } from 'src/app/collab-evaluation/collab-evaluation.component';
+import { EvaluationComponent } from 'src/app/manager-evaluations/evaluation/evaluation.component';
+import { EvaluationCompetenceComponent } from 'src/app/manager-evaluations/evaluation-competence/evaluation-competence.component';
+
+
 
 const routes: Routes = [
   {
@@ -22,31 +27,12 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        loadChildren: () => import('./demo/dashboard/dashboard.module').then(m => m.DashboardModule)
+        component : HomeComponent
       },
-      {
-        path: 'basic',
-        loadChildren: () => import('./demo/ui-elements/ui-basic/ui-basic.module').then(m => m.UiBasicModule)
-      },
-      {
-        path: 'forms',
-        loadChildren: () => import('./demo/pages/form-elements/form-elements.module').then(m => m.FormElementsModule)
-      },
-      {
-        path: 'tables',
-        loadChildren: () => import('./demo/pages/tables/tables.module').then(m => m.TablesModule)
-      },
-      {
-        path: 'charts',
-        loadChildren: () => import('./demo/pages/core-chart/core-chart.module').then(m => m.CoreChartModule)
-      },
-      {
-        path: 'sample-page',
-        loadChildren: () => import('./demo/extra/sample-page/sample-page.module').then(m => m.SamplePageModule)
-      },
+
       {
         path : 'auto-evaluation',
-        component : AutoEvaluationComponent
+        component : CollabEvaluationComponent
       },
       {
         path : 'profile',
@@ -55,19 +41,27 @@ const routes: Routes = [
       {
         path : 'eips',
         component : ManagerEvaluationsComponent
+      },
+      {
+        path : 'evaluation',
+        component : EvaluationComponent
+      },
+      {
+        path : 'competence',
+        component : EvaluationCompetenceComponent
       }
+
     ]
   },
   {
-    path: '',
-    component: AuthComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./demo/pages/authentication/authentication.module').then(m => m.AuthenticationModule)
-      }
-    ]
-  }
+    path: 'login',
+    component: AuthLoginComponent
+  },
+  {
+    path : '**',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

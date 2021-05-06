@@ -1,3 +1,5 @@
+import { fonction } from 'src/models/fonction';
+
 export class User {
     id: number;
     email : string;
@@ -5,6 +7,6 @@ export class User {
     password: string;
     fullname: string;
     matricule: string;
-    date_integration : Date;
-    fonction : any;
+    dateIntegration : Date;
+    fonction : fonction;
 }

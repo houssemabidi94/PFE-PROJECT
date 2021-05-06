@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './theme/shared/shared.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './theme/layout/admin/admin.component';
-import { AuthComponent } from './theme/layout/auth/auth.component';
 import { NavigationComponent } from './theme/layout/admin/navigation/navigation.component';
 import { NavLogoComponent } from './theme/layout/admin/navigation/nav-logo/nav-logo.component';
 import { NavContentComponent } from './theme/layout/admin/navigation/nav-content/nav-content.component';
@@ -16,28 +15,30 @@ import { NavGroupComponent } from './theme/layout/admin/navigation/nav-content/n
 import { NavCollapseComponent } from './theme/layout/admin/navigation/nav-content/nav-collapse/nav-collapse.component';
 import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/nav-item/nav-item.component';
 import { NavBarComponent } from './theme/layout/admin/nav-bar/nav-bar.component';
-import {ToggleFullScreenDirective} from './theme/shared/full-screen/toggle-full-screen';
 import {NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import { NavLeftComponent } from './theme/layout/admin/nav-bar/nav-left/nav-left.component';
 import { NavSearchComponent } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
 import { NavRightComponent } from './theme/layout/admin/nav-bar/nav-right/nav-right.component';
-import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService } from 'src/Services/authguard.service';
 import { AuthenticationService } from 'src/Services/authentication.service';
 import { BasicAuthHttpInterceptorService } from 'src/Services/basic-auth-http-interceptor.service';
 import { AutoEvaluationComponent } from './auto-evaluation/auto-evaluation.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { ListeEipsComponent } from './liste-eips/liste-eips.component';
-import { UserEvaluationCardComponent } from './user-evaluation-card/user-evaluation-card.component';
 import { ManagerEvaluationsModule } from 'src/app/manager-evaluations/manager-evaluations.module';
 import { SharedServicesService } from 'src/Services/shared-services.service';
+import { AuthLoginComponent } from './auth-login/auth-login.component';
+import { HomeComponent } from './home/home.component';
+
+import { MaterialModule } from 'src/models/material/material.module';
+import { CollabEvaluationComponent } from './collab-evaluation/collab-evaluation.component';
+import { EvaluationComponent } from 'src/app/manager-evaluations/evaluation/evaluation.component';
+
  
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    AuthComponent,
     NavigationComponent,
     NavLogoComponent,
     NavContentComponent,
@@ -45,15 +46,16 @@ import { SharedServicesService } from 'src/Services/shared-services.service';
     NavCollapseComponent,
     NavItemComponent,
     NavBarComponent,
-    ToggleFullScreenDirective,
     NavLeftComponent,
     NavSearchComponent,
     NavRightComponent,
-    ConfigurationComponent,
     AutoEvaluationComponent,
     UserProfileComponent,
-    ListeEipsComponent,
-    UserEvaluationCardComponent,
+    AuthLoginComponent,
+    HomeComponent,
+    EvaluationComponent,
+    CollabEvaluationComponent,
+    
     
     ],
   imports: [
@@ -67,7 +69,8 @@ import { SharedServicesService } from 'src/Services/shared-services.service';
     NgbTabsetModule,
     FormsModule,
     HttpClientModule,
-    ManagerEvaluationsModule
+    ManagerEvaluationsModule,
+    MaterialModule
     
   ],
   providers: [ {

@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 
 
+
+
 @Entity
 @Table(name = "objectif")
 public class Objectif {
@@ -32,14 +34,9 @@ public class Objectif {
 	
 	
 	
-	@ManyToOne(cascade = {CascadeType.ALL}) 
-    @JoinColumn(name = "idUser", referencedColumnName = "id")
-	private DAOUser user;
-	
-	
-	@ManyToOne(cascade = {CascadeType.ALL}) 
-    @JoinColumn(name = "idCampagne", referencedColumnName = "idCampagne")
-	private Campagne campagne;
+	@ManyToOne()
+    @JoinColumn(name = "idEntretien", referencedColumnName = "id")
+	private Entretien entretien;
 	
 	
 	public Objectif() {
@@ -47,13 +44,18 @@ public class Objectif {
 	}
 	
 
-	public Objectif(String designation, DAOUser user, Campagne campagne) {
+	public Objectif(String designation) {
 		super();
 		this.designation = designation;
-		this.user = user;
-		this.campagne = campagne;
+
 	}
 
+	public Objectif(String designation,Entretien ent) {
+		super();
+		this.designation = designation;
+		this.entretien = ent;
+
+	}
 
 	public long getId() {
 		return id;
@@ -94,31 +96,18 @@ public class Objectif {
 	public void setAutoEvaluation(String autoEvaluation) {
 		this.autoEvaluation = autoEvaluation;
 	}
-	@Override
-	public String toString() {
-		return "Objectif [id=" + id + ", designation=" + designation + ", evaluation=" + evaluation + ", commentaire="
-				+ commentaire + ", autoEvaluation=" + autoEvaluation + "]";
+
+
+	public Entretien getEntretien() {
+		return entretien;
 	}
 
 
-	public DAOUser getUser() {
-		return user;
+	public void setEntretien(Entretien entretien) {
+		this.entretien = entretien;
 	}
+	
 
-
-	public void setUser(DAOUser user) {
-		this.user = user;
-	}
-
-
-	public Campagne getCampagne() {
-		return campagne;
-	}
-
-
-	public void setCampagne(Campagne campagne) {
-		this.campagne = campagne;
-	}
 	
 	
 }
