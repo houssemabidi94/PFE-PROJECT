@@ -30,6 +30,9 @@ public class Evaluation implements Serializable {
     @JoinColumn(insertable=false,updatable=false, name = "idCompetence", referencedColumnName = "id")
 	private Competence competence;
 
+	@ManyToOne
+    @JoinColumn(insertable=false,updatable=false, name = "idNiveau", referencedColumnName = "id")
+	private Niveau niveau;
 	
 	
 	public EvaluationPK getEvaluationPK() {

@@ -11,15 +11,15 @@
                             <i class="fas fa-align-justify"> Objectif #{{ i + 1 }}</i>
                         </label>
                         <textarea class="form-control" placeholder="Saisir l'objectif ici ..."
-                        name={{i}}{{objectif.designation}} (change)="addNew(objectif)" [(ngModel)]="objectif.designation">
+                        name={{i}}{{objectif.designation}} (change)="addNew(objectif)" [(ngModel)]="objectif.designation" id="newObj">
 
                     </textarea>
 
                         <button style="float:right" mat-icon-button color="warn" *ngIf="newObjectifList?.length > 1"
-                            (click)="deleteRow(i)">
+                            (click)="deleteRow(i)" id="del">
                             <span class="material-icons">delete</span>
                         </button>
-                        <button style="float:right" mat-icon-button color="primary" (click)="addNewRow()">
+                        <button style="float:right" mat-icon-button color="primary" (click)="addNewRow()" id="add">
                             <span class="material-icons">add</span>
                         </button>
                         <br>
@@ -33,7 +33,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
         </button>
-        <span>
+        <span id="success2">
                 <strong>
                         <i class="fas fa-thumbs-up"> Les objectifs sont ajoutés avec success !</i>
                 </strong>
@@ -41,12 +41,12 @@
 </div>
 
 <div class="col-12">
-        <button type="button" (click)="onSubmit()" class="btn btn-success mx-auto d-block">
+        <button type="button" (click)="onSubmit()" class="btn btn-success mx-auto d-block" id="save">
                 <i class="feather icon-check-circle"></i>Valider</button>
 </div>
 </div>
 
 <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext (click)="onSubmit()">Next</button>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext id="next2">Suivant</button>
       </div>

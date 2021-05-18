@@ -56,14 +56,16 @@ public class Entretien {
 	@OneToMany(mappedBy = "entretien")
 	private List<Objectif> objectifs;
 	
+	
 	public Entretien() {
 		super();
 	}
 
 	
 	
-	public Entretien(DAOUser user, Campagne campagne) {
+	public Entretien(long id,DAOUser user, Campagne campagne) {
 		super();
+		this.id = id;
 		this.user = user;
 		this.campagne = campagne;
 	}

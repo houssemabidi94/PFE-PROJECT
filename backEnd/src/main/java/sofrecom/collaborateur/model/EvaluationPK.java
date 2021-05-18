@@ -11,7 +11,8 @@ public class EvaluationPK implements Serializable {
 
 	private long idUser;
 	private long idCompetence;
-
+	private long idNiveau;
+	
 	public EvaluationPK() {
 		super();
 	}
@@ -60,5 +61,13 @@ public class EvaluationPK implements Serializable {
 	@Override
 	public String toString() {
 		return "EvaluationPK [idUser=" + idUser + ", idCompetence=" + idCompetence + "]";
+	}
+
+	public long getIdNiveau() {
+		return idNiveau;
+	}
+
+	public void setIdNiveau(long idNiveau) {
+		this.idNiveau = idNiveau;
 	}
 }

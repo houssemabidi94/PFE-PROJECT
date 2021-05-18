@@ -7,23 +7,35 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 /**
  * @type { import("protractor").Config }
  */
+
+ 
 exports.config = {
   allScriptsTimeout: 11000,
-  specs: [
-    './src/**/*.e2e-spec.ts'
-  ],
+suites:{
+
+protected : './src/protected/protected.e2e-spec.ts',
+login :     './src/login/login.e2e-spec.ts',
+autoeval :     './src/auto-eval/autoeval.e2e-spec.ts',
+evalManager : './src/eval-manager/evalmanager.e2e-spec.ts',
+teamEvaluate : './src/team-evaluate/teamevaluate.e2e-spec.ts',
+newobj : './src/new-objectifs/newobjectif.e2e-spec.ts',
+evalcomp : './src/eval-competences/evalcomp.e2e-spec.ts',
+},
   capabilities: {
-    browserName: 'chrome'
+    browserName: 'chrome',
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 1440000,
     print: function() {}
   },
   onPrepare() {
+    
+    browser.driver.manage().window().maximize();
+
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.json')
     });

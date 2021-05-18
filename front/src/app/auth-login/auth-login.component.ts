@@ -12,13 +12,13 @@ export class AuthLoginComponent implements OnInit {
 
   user = new User;
   invalidLogin =false;
-  submitted = false;
-  clicked = false;
 
   constructor(public router : Router , private loginservice: AuthenticationService) { }
 
   ngOnInit() {
-
+    if (this.loginservice.isUserLoggedIn) {
+      this.router.navigate(['/home']);
+   }
   } 
 
 
@@ -36,12 +36,8 @@ verify(){
   );
 }
 onSubmit(invalid) {
-  this.clicked=true;
   if(!invalid)
     this.verify();
-  else{
-    this.submitted = false;
-  }
     
 }
 }

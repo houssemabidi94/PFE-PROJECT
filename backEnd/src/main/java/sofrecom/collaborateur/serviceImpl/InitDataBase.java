@@ -329,6 +329,7 @@ public class InitDataBase {
 			//Manager
 			
 			DAOUser newUser = new DAOUser();
+			newUser.setId(1);
 			newUser.setFullname("manager");
 			newUser.setEmail("manager");
 			newUser.setUsername("manager");
@@ -341,6 +342,7 @@ public class InitDataBase {
 			//Collab
 			
 			DAOUser newUser2 = new DAOUser();
+			newUser2.setId(2);
 			newUser2.setFullname("collab");
 			newUser2.setEmail("collab");
 			newUser2.setUsername("collab");
@@ -354,6 +356,7 @@ public class InitDataBase {
 			//collab 2
 			
 			DAOUser newUser3 = new DAOUser();
+			newUser3.setId(3);
 			newUser3.setFullname("collab2");
 			newUser3.setEmail("collab2");
 			newUser3.setUsername("collab2");
@@ -371,15 +374,17 @@ public class InitDataBase {
 			campagneRepository.save(new Campagne(campagneServ.getNextSemester(), false));
 
 			// init entretient
-			entRepo.save(new Entretien(newUser, new Campagne(campagneServ.getPreviousSemester())));
-			entRepo.save(new Entretien(newUser2, new Campagne(campagneServ.getPreviousSemester())));
-			entRepo.save(new Entretien(newUser3, new Campagne(campagneServ.getPreviousSemester())));
+			entRepo.save(new Entretien(1,newUser, new Campagne(campagneServ.getPreviousSemester())));
+			entRepo.save(new Entretien(2,newUser2, new Campagne(campagneServ.getPreviousSemester())));
+			entRepo.save(new Entretien(3,newUser3, new Campagne(campagneServ.getPreviousSemester())));
 			
 			//init obj
-for(int i=1 ; i<8;i++) {
-			objRepo.save(new Objectif("obj"+i, new Entretien(1)));
-			objRepo.save(new Objectif("obj"+i, new Entretien(2)));
-			objRepo.save(new Objectif("obj"+i, new Entretien(3)));
+for(long i=1 ; i<17;i++) {
+			objRepo.save(new Objectif(i,"obj"+i, new Entretien(1)));
+			i++;
+			objRepo.save(new Objectif(i,"obj"+i, new Entretien(2)));
+			i++;
+			objRepo.save(new Objectif(i,"obj"+i, new Entretien(3)));
 }
 			
 			// init competence

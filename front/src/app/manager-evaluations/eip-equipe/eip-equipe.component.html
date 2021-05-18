@@ -85,9 +85,9 @@
                     </ng-container>
               
                   
-                  <ng-container matColumnDef="Collaborateur">
+                  <ng-container matColumnDef="Collaborateur" >
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Collaborateur </th>
-                    <td mat-cell *matCellDef="let row"> {{row.user.fullname}} </td>
+                    <td mat-cell *matCellDef="let row"> <span id="collab">{{row.user.fullname}}</span> </td>
                   </ng-container>
         
                   <ng-container matColumnDef="Compagne">

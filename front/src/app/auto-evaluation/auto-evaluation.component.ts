@@ -7,53 +7,55 @@ import { MatSort } from '@angular/material/sort';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-auto-evaluation',
-  templateUrl: './auto-evaluation.component.html',
-  styleUrls: ['./auto-evaluation.component.scss']
+	selector: 'app-auto-evaluation',
+	templateUrl: './auto-evaluation.component.html',
+	styleUrls: ['./auto-evaluation.component.scss']
 })
-export class AutoEvaluationComponent implements  AfterViewInit {
+export class AutoEvaluationComponent implements AfterViewInit {
 
-  objectifs: Array<Objectif> = [];
+	objectifs: Array<Objectif> = [];
 	tempList: Array<Objectif> = [];
 	submitted = false;
+	err = false;
 	evaluations = [
-		{ "id": 1, "designation": "Performance a ameliore"},
-		{ "id": 2, "designation": "Zone de conformite"},
-		{ "id": 3, "designation": "Objectif dépassé"},
-		{ "id": 4, "designation": "Performance exceptionnelle"}
+		{ "id": 1, "designation": "Performance a ameliore" },
+		{ "id": 2, "designation": "Zone de conformite" },
+		{ "id": 3, "designation": "Objectif dépassé" },
+		{ "id": 4, "designation": "Performance exceptionnelle" }
 	];
 	//Mat table
-	displayedColumns: string[] = ['position', 'designation','autoEvaluation','commentaire'];
+	displayedColumns: string[] = ['position', 'designation', 'autoEvaluation', 'commentaire'];
 	dataSource: MatTableDataSource<Objectif>;
-	
+
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
-	
-  constructor(private objectifService: ObjectifService) {
-		
+
+	constructor(private objectifService: ObjectifService) {
+
 		this.getAllObjectifs();
-	 }
+	}
 	ngAfterViewInit() {
 
 	}
 	getAllObjectifs() {
-		
+
 		this.objectifService.getObjectifsList().subscribe(data => {
 			this.objectifs = data,
-			this.dataSource = new MatTableDataSource(this.objectifs);
-      this.dataSource.paginator = this.paginator;
+				this.dataSource = new MatTableDataSource(this.objectifs);
+			this.dataSource.paginator = this.paginator;
 			this.dataSource.sort = this.sort;
 		});
-  }
-  autoEvaluate() {
+	}
+	autoEvaluate() {
+
 		for (let i = 0; i < this.tempList.length; i++) {
-			console.log("saving ...");
 			this.objectifService.saveObjectif(this.tempList[i]).subscribe();
 		}
 		this.submitted = true;
-  }
-  change(objectif: Objectif) {
+	}
+
+	change(objectif: Objectif) {
 		let flag = false;
 		if (this.tempList.length == 0) {
 			this.tempList.push(objectif);
@@ -73,18 +75,18 @@ export class AutoEvaluationComponent implements  AfterViewInit {
 			}
 		}
 	}
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+	applyFilter(event: Event) {
+		const filterValue = (event.target as HTMLInputElement).value;
+		this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+		if (this.dataSource.paginator) {
+			this.dataSource.paginator.firstPage();
+		}
 	}
-	
 
-  form = new FormGroup({
-    supName: new FormControl()
+
+	form = new FormGroup({
+		supName: new FormControl()
 	});
 
 

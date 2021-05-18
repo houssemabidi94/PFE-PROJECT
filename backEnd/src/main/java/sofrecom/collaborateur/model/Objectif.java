@@ -50,8 +50,9 @@ public class Objectif {
 
 	}
 
-	public Objectif(String designation,Entretien ent) {
+	public Objectif(long id,String designation,Entretien ent) {
 		super();
+		this.id = id;
 		this.designation = designation;
 		this.entretien = ent;
 

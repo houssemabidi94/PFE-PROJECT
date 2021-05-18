@@ -21,7 +21,11 @@
                 <input type="password" class="form-control" placeholder="Password" #password="ngModel" 
                 [(ngModel)]="user.password" name="password">
               </div>
+              <div class="alert alert-danger" role="alert" [hidden]="!invalidLogin">
+                les informations d'identification invalides
+              </div>
               <button class="btn btn-primary mb-4">Login</button>
+
             </form>
             </div>
           </div>

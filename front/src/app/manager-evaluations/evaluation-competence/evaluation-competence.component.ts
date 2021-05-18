@@ -10,6 +10,7 @@ import { NiveauService } from 'src/Services/niveau.service';
 import { Niveau } from 'src/models/niveau';
 import { DescriptionService } from 'src/Services/description.service';
 import { Description } from 'src/models/description';
+import { Evaluation } from 'src/models/evaluation';
 
 
 @Component({
