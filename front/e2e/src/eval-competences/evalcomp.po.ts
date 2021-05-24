@@ -22,9 +22,9 @@ export class evalCompetence {
 
     element(by.id('select2')).click();
 
-        browser.actions().mouseUp(element(by.id('submit'))).perform();
-        browser.actions().mouseDown(element(by.id('submit'))).perform();
-browser.actions().mouseMove(element(by.id('submit'))).perform();
+        browser.actions().mouseUp(element(by.id('submit2'))).perform();
+        browser.actions().mouseDown(element(by.id('submit2'))).perform();
+browser.actions().mouseMove(element(by.id('submit2'))).perform();
         
 for(let i =0;i<5;i++){
 element.all(by.css('button[aria-label=\'Next page\']')).get(1).click();
@@ -41,9 +41,9 @@ for(let i =0;i<5;i++){
       browser.actions().mouseMove(niv).click().perform();
     });
 }
-browser.actions().mouseUp(element(by.id('submit'))).perform();
-browser.actions().mouseDown(element(by.id('submit'))).perform();
-browser.actions().mouseMove(element(by.id('submit'))).click().perform();
+browser.actions().mouseUp(element(by.id('submit2'))).perform();
+browser.actions().mouseDown(element(by.id('submit2'))).perform();
+browser.actions().mouseMove(element(by.id('submit2'))).click().perform();
 
 }
 
