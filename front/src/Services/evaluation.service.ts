@@ -14,6 +14,11 @@ export class EvaluationService {
 
   newEvaluation(idUser:number,idCompetence:number,idNiveau:number): Observable<any> {
     let uri="newEvaluation/"+idUser+"/"+idCompetence+"/"+idNiveau;
-    return this.http.post<any[]>(this.baseUrl+uri,null);
+    return this.http.put<any[]>(this.baseUrl+uri,null);
+  }
+
+  getUserEval(idUser:number,competenceId : number): Observable<any> {
+    let uri="userEvaluation/"+idUser+"/"+competenceId;
+    return this.http.get<any[]>(this.baseUrl+uri);
   }
 }

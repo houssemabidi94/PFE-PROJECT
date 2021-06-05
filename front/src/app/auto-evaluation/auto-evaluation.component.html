@@ -36,21 +36,9 @@
           <!-- autoEvaluation Column -->
           <ng-container matColumnDef="autoEvaluation">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Evaluation </th>
-            <td mat-cell *matCellDef="let objectif of objectifs">
+            <td mat-cell *matCellDef="let objectif">
                     <mat-form-field appearance="fill" style="width:60%">
                             <mat-label>Evaluer</mat-label>
-                          <!--  <select matNativeControl (change)="change(objectif)" class="form-control" name={{objectif.autoEvaluation}}{{objectif.designation}} [(ngModel)]="objectif.autoEvaluation">
-                                    <option value="{{objectif.autoEvaluation}}" selected >
-                                        {{objectif.autoEvaluation}}</option>
-                                    <option value="Performance ameliore">Performance
-                                        ameliore</option>
-                                    <option value="Zone de conformite">Zone de
-                                        conformite</option>
-                                    <option value="Objectif dépassé">Objectif
-                                        dépassé</option>
-                                    <option value="Performance exceptionnelle">
-                                        Performance exceptionnelle </option>
-                                </select> -->
                                 <mat-select (selectionChange)="change(objectif)" name={{objectif.autoEvaluation}}{{objectif.designation}} [(ngModel)]="objectif.autoEvaluation" id="select">
                                     <mat-option [hidden]="!objectif.autoEvaluation" [value]="objectif.autoEvaluation" selected>
                                         {{ objectif.autoEvaluation }}
@@ -67,7 +55,7 @@
                 
                 <ng-container matColumnDef="commentaire" >
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Commentaire </th>
-                        <td mat-cell *matCellDef="let objectif of objectifs">
+                        <td mat-cell *matCellDef="let objectif">
                         <textarea  (change)="change(objectif)" class="form-control" placeholder="commentaire" value={{objectif.commentaire}} [(ngModel)]="objectif.commentaire" rows="1" id="comm">
                             </textarea>
                         </td>
@@ -83,7 +71,7 @@
           </tr>
         </table>
       
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
       </div>
       
       <div class="alert alert-success alert-dismissible fade show col-6 mt-3" role="alert" *ngIf ="submitted">

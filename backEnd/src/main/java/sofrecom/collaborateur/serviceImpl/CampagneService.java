@@ -59,7 +59,7 @@ public class CampagneService {
 		int year = getCurrentYear();
 		if (semester == "S2")
 			semester = "S1";
-		if (semester == "S1") {
+		else if (semester == "S1") {
 			semester = "S2";
 			year = year - 1;
 		}
@@ -73,7 +73,7 @@ public class CampagneService {
 			semester = "S1";
 			year = year + 1;
 		}
-		if (semester == "S1") {
+		else if (semester == "S1") {
 			semester = "S2";
 		}
 		return semester + "-" + year;

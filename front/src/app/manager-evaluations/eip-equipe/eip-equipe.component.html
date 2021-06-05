@@ -4,59 +4,6 @@
         </div>
 
 </div>
-<!--
-<ng-template #other>
-        <div class="table-responsive">
-
-<div class="alert alert-secondary alert-dismissible fade show col-6" role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
-<span> <strong><i class="far fa-lightbulb">  Veuillez choisir un Collaborateur pour évaluer ses objectifs .</i></strong></span>
-</div>
-                      
-                <p class="mt-2">Liste des EIPs</p>
-                <table class="table table-hover">
-                        <thead>
-                                <tr class="table-primary">
-                                        <th>
-                                                #
-                                        </th>
-                                        <th>
-                                                Collaborateur
-                                        </th>
-                                        <th>
-                                                Compagne
-                                        </th>
-                                        <th>
-                                                Status
-                                        </th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                                <tr *ngFor="let entretien of entretient; let i =index" style="cursor: pointer;" (click)="getCollaborateur(entretien)" title="Voir plus de détails">
-                                        <td>
-                                                {{i+1}}
-                                        </td>
-                                        <td>
-                                                {{entretien.user.fullname}}
-                                        </td>
-                                        <td>
-                                                {{entretien.campagne.idCampagne}}
-                                        </td>
-                                        <td>
-                                                <span *ngIf = "entretien.status">{{entretien.status}}</span>
-                                                <span *ngIf = "!entretien.status">ATTENTE_EVALUATION</span>
-                                                
-                                        </td>
-
-                                </tr>
-
-                        </tbody>
-                </table>
-        </div>
-</ng-template>
--->
 
 <div [hidden] ="!entretient.length">
         <div class="alert alert-secondary alert-dismissible fade show col-6" role="alert">
@@ -112,7 +59,7 @@
                   </tr>
                 </table>
               
-                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
               </div>
               
                 </div>

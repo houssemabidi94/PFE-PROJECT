@@ -20,6 +20,8 @@ export class AddNewObjectiveComponent implements OnInit {
 
   obj: Objectif = new Objectif();
 
+  shareObj : Array<Objectif> = [];
+
   user : User;
   success = false;
 
@@ -60,8 +62,13 @@ private objectifService : ObjectifService) { }
   onSubmit(){
     for (let i = 0; i < this.newObjectifList.length; i++) {
       
-        this.objectifService.saveNewObjectif(this.newObjectifList[i], this.user.id).subscribe();      
+       // this.objectifService.saveNewObjectif(this.newObjectifList[i], this.user.id).subscribe();
+        if(this.shareObj[i] != this.newObjectifList[i]){
+        this.shareObj =  this.sharedServicesService.setObj(this.newObjectifList[i]);
+        }      
     }
+    let getObj = this.sharedServicesService.getObj();
+ console.log(getObj);
     this.success = true;
   }
 	addNew(objectif: Objectif) {

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -79,6 +80,14 @@ public class EntretienController {
 	@GetMapping("findCollaborateurByEntretien/{idEntretien}")
 	public DAOUser getCollaborateurByEntretien(@PathVariable("idEntretien") long id) {
 		return entretienService.getCollaborateurByEntretien(id);
+	}
+	
+	@PutMapping("addNewProjet/{idUser}")
+	@ResponseBody
+	public void addNewProjet(@RequestBody Entretien entretient,@PathVariable("idUser") long userId) {
+		
+		entretienService.newProjet(entretient, userId);
+		
 	}
 }
 

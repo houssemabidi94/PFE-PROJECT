@@ -6,7 +6,6 @@ import {BreadcrumbModule, CardModule} from './components';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {ClickOutsideModule} from 'ng-click-outside';
 
-import 'hammerjs';
 import 'mousetrap';
 import {GalleryModule} from '@ks89/angular-modal-gallery';
 import { SpinnerComponent } from 'src/app/theme/shared/components/spinner/spinner.component';

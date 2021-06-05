@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import sofrecom.collaborateur.model.Campagne;
 import sofrecom.collaborateur.model.DAOUser;
 import sofrecom.collaborateur.model.Entretien;
+import sofrecom.collaborateur.model.Objectif;
 import sofrecom.collaborateur.model.Status;
 import sofrecom.collaborateur.repository.CampagneRepository;
 import sofrecom.collaborateur.repository.EntretientRepository;
@@ -45,9 +46,9 @@ public class EntretienService implements IEntretienService {
 	}
 
 	@Override
-	public Entretien getEntretienByCollaborateur(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Entretien getEntretienByCollaborateur(long userId) {
+		Entretien entretien = EntretienRepo.findEntretienByUserId(userId);
+		return entretien;
 	}
 	
 	@Override
@@ -69,4 +70,15 @@ public class EntretienService implements IEntretienService {
 		return EntretienRepo.findCollaborateurByEntretien(id);
 	}
 
+	@Override
+	public void newProjet(Entretien ent, long userId) {
+
+			
+		Entretien entretien = EntretienRepo.findEntretienByUserId(userId);
+		entretien.setStatus(Status.PROJET_PROFESSIONEL);
+		entretien.setProjet(ent.getProjet());
+		entretien.setFormations(ent.getFormations());
+		
+		EntretienRepo.save(entretien);
+	}
 }

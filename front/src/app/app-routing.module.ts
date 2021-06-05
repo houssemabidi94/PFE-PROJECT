@@ -49,8 +49,7 @@ const routes: Routes = [
       {
         path : 'competence',
         component : EvaluationCompetenceComponent
-      }
-
+      },
     ]
   },
   {

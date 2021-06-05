@@ -34,7 +34,7 @@ public class Entretien {
 	
 	@Column(nullable = true)
 	private String projet;
-	@Column(nullable = true)
+	@Column(columnDefinition="TEXT")
 	private String points;
 	@Column(nullable = true)
 	private String axes;

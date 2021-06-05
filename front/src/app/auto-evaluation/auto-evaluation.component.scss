@@ -18,3 +18,12 @@ table {
   .mat-from-field select {
   //  width: 700px;
   }
+  mat-header-cell{
+    background-color:darkseagreen;
+    color: white;
+    font-size: 15px;
+  }
+  mat-cell{
+    padding: 16px 16px 16px 16px;
+   
+   }

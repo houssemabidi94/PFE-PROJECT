@@ -14,4 +14,5 @@ public interface IEntretienService {
 	public Entretien getEntretienByCollaborateur(long id) ;
 	void newEntretient(Entretien entretien, long id);
 	public DAOUser getCollaborateurByEntretien(Entretien entretien);
+	void newProjet(Entretien ent, long userId);
 }

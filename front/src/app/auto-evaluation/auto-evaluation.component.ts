@@ -63,13 +63,11 @@ export class AutoEvaluationComponent implements AfterViewInit {
 		else {
 			for (let i = 0; i < this.tempList.length; i++) {
 				if (this.tempList[i] == objectif) {
-					console.log("objectif found ! saving changes on a temp list  list ");
 					flag = true;
 					this.tempList[i].autoEvaluation = objectif.autoEvaluation;
 					this.tempList[i].commentaire = objectif.commentaire;
 				}
 				if (flag == false) {
-					console.log("objectif not found time to push a new objectif ");
 					this.tempList.push(objectif);
 				}
 			}

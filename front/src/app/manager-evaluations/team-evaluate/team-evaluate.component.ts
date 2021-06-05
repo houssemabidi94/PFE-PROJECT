@@ -80,7 +80,6 @@ export class TeamEvaluateComponent implements OnInit {
 
   onSubmit() {                
         this.evaluate();
-        this.sharedServicesService.setValue(this.user);
   }
   evaluate() {
  

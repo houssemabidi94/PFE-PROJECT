@@ -31,7 +31,8 @@ public class Objectif {
 	@Column(nullable = true)
 	private String autoEvaluation;
 	
-	
+	@Column(columnDefinition="TEXT")
+	private String remarque;
 	
 	
 	@ManyToOne()
@@ -106,6 +107,16 @@ public class Objectif {
 
 	public void setEntretien(Entretien entretien) {
 		this.entretien = entretien;
+	}
+
+
+	public String getRemarque() {
+		return remarque;
+	}
+
+
+	public void setRemarque(String remarque) {
+		this.remarque = remarque;
 	}
 	
 
