@@ -3,6 +3,7 @@ import { LoginPage } from './login.po';
 import { browser, protractor } from 'protractor';
 import { HomePage } from '../home/home.po';
 
+
 var origFn = browser.driver.controlFlow().execute;
 browser.driver.controlFlow().execute = function() {
   var args = arguments;
@@ -44,6 +45,6 @@ describe('Login page', () => {
   it('lorsque la connexion est réussie - il doit rediriger vers la page "Home" par défaut', () => {
     page.clearValues();
     page.fillCredentials(collabCredentials);
-    expect(publicPage.getPageTitleText()).toEqual('Home');
+    expect(publicPage.getPageTitleText()).toEqual('Evaluation des objectifs individuel');
   });
 });

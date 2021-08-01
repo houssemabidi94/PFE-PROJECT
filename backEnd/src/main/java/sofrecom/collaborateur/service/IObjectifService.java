@@ -15,6 +15,8 @@ public interface IObjectifService {
 	public List<Objectif> getCollaborateurObjectifsForManager(long id);
 
 	public void evaluateObjectif(Objectif objectif);
+
+	void feedbackObjectif(Objectif objectif, long userId);
 	
 
 }

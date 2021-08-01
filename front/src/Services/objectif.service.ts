@@ -39,6 +39,6 @@ export class ObjectifService {
 
   saveNewObjectif(objectif:Objectif,id:number): Observable<any> {
     let uri="newObjectif/"+id;
-    return  this.http.post<any[]>(this.baseUrl+uri,objectif);
+    return  this.http.put<any[]>(this.baseUrl+uri,objectif);
   }
 }

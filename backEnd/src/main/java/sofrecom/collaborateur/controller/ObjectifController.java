@@ -65,7 +65,7 @@ public class ObjectifController {
 	public void evaluateObjectif(@RequestBody Objectif objectif) {
 		objectifService.evaluateObjectif(objectif);
 	}
-	@PostMapping("newObjectif/{id}")
+	@PutMapping("newObjectif/{id}")
 	@ResponseBody
 	public void newObjectif(@PathVariable(value="id") long id, @RequestBody Objectif objectif) {
 		objectifService.newObjectif(objectif, id);

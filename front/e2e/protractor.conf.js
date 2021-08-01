@@ -20,6 +20,8 @@ evalManager : './src/eval-manager/evalmanager.e2e-spec.ts',
 teamEvaluate : './src/team-evaluate/teamevaluate.e2e-spec.ts',
 newobj : './src/new-objectifs/newobjectif.e2e-spec.ts',
 evalcomp : './src/eval-competences/evalcomp.e2e-spec.ts',
+projetpro : './src/projet-pro/projetpro.e2e-spec.ts',
+cloture : './src/cloture/cloture.e2e-spec.ts',
 },
   capabilities: {
     browserName: 'chrome',
@@ -39,6 +41,11 @@ evalcomp : './src/eval-competences/evalcomp.e2e-spec.ts',
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.json')
     });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+
+    jasmine.getEnv().addReporter(new SpecReporter({
+      spec: {
+        displayStacktrace: true
+      }
+    }));
   }
 };

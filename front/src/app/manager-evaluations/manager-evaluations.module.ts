@@ -17,9 +17,11 @@ import { EipEquipeComponent } from './eip-equipe/eip-equipe.component';
 import { UserProfileCardComponent } from './user-profile-card/user-profile-card.component';
 import { ProjetProfessionelComponent } from './projet-professionel/projet-professionel.component';
 import { ClotureComponent } from './cloture/cloture.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { FeedbackNewObjComponent } from './feedback-new-obj/feedback-new-obj.component';
 
 @NgModule({
-  declarations: [ManagerEvaluationsComponent, AddNewObjectiveComponent,TeamEvaluateComponent, EvaluationCompetenceComponent, EipEquipeComponent, UserProfileCardComponent, ProjetProfessionelComponent, ClotureComponent],
+  declarations: [ManagerEvaluationsComponent, AddNewObjectiveComponent,TeamEvaluateComponent, EvaluationCompetenceComponent, EipEquipeComponent, UserProfileCardComponent, ProjetProfessionelComponent, ClotureComponent, FeedbackComponent, FeedbackNewObjComponent],
   imports: [
     CommonModule,
     ManagerEvaluationsRoutingModule,
@@ -29,6 +31,6 @@ import { ClotureComponent } from './cloture/cloture.component';
     FormsModule,
     SharedModule
   ],
-  exports : [EipEquipeComponent,UserProfileCardComponent]
+  exports : [EipEquipeComponent,UserProfileCardComponent,FeedbackComponent]
 })
 export class ManagerEvaluationsModule { }

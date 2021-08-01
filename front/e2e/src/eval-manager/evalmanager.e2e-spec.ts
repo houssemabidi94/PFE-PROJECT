@@ -41,7 +41,7 @@ const managerCredentials={
   it('lorsque le manager a réussie sa connexion - il doit rediriger vers la page "Home" par défaut', () => {    
     homep.logOut();
     loginpage.fillCredentials(managerCredentials);
-    expect(homep.getPageTitleText()).toEqual('Home');
+    expect(homep.getPageTitleText()).toEqual('Evaluation');
   });
   it('le manager a fait avec succès l auto evaluation ', () => {
     evalmanager.navigateTo();

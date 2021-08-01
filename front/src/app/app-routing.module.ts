@@ -6,11 +6,11 @@ import { AutoEvaluationComponent } from 'src/app/auto-evaluation/auto-evaluation
 import { UserProfileComponent } from 'src/app/user-profile/user-profile.component';
 import { ManagerEvaluationsComponent } from 'src/app/manager-evaluations/manager-evaluations.component';
 import { AuthLoginComponent } from 'src/app/auth-login/auth-login.component';
-import { HomeComponent } from 'src/app/home/home.component';
 
 import { CollabEvaluationComponent } from 'src/app/collab-evaluation/collab-evaluation.component';
 import { EvaluationComponent } from 'src/app/manager-evaluations/evaluation/evaluation.component';
 import { EvaluationCompetenceComponent } from 'src/app/manager-evaluations/evaluation-competence/evaluation-competence.component';
+import { FeedbackNewObjComponent } from 'src/app/manager-evaluations/feedback-new-obj/feedback-new-obj.component';
 
 
 
@@ -20,16 +20,6 @@ const routes: Routes = [
     canActivate:[AuthGuardService],
     component: AdminComponent,
     children: [
-      {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-      },
-      {
-        path: 'home',
-        component : HomeComponent
-      },
-
       {
         path : 'auto-evaluation',
         component : CollabEvaluationComponent
@@ -50,6 +40,10 @@ const routes: Routes = [
         path : 'competence',
         component : EvaluationCompetenceComponent
       },
+      {
+        path : 'feedback',
+        component : FeedbackNewObjComponent
+      }
     ]
   },
   {
@@ -58,7 +52,7 @@ const routes: Routes = [
   },
   {
     path : '**',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 ];

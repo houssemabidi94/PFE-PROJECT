@@ -34,12 +34,12 @@ export class NavigationComponent implements OnInit {
     this.currentUser.getUserProfile().subscribe(data =>{
       this.user = data;
       if(this.user.fonction.libelle == "manager" || this.user.fonction.libelle =="Manager" || this.user.fonction.libelle =="MANAGER"){
-        this.navigation[2].hidden = false;
-        this.navigation[1].hidden = true;
+        this.navigation[1].hidden = false;
+        this.navigation[0].hidden = true;
       }
       if(this.user.fonction.libelle == "collaborateur" || this.user.fonction.libelle =="Collaborateur" || this.user.fonction.libelle =="COLLABORATEUR"){
-      this.navigation[1].hidden = false;
-      this.navigation[2].hidden = true;
+      this.navigation[0].hidden = false;
+      this.navigation[1].hidden = true;
     }
     }
     );

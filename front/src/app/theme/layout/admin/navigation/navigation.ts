@@ -27,7 +27,7 @@ export interface Navigation extends NavigationItem {
 }
 
 const NavigationItems   = [
-  {
+ /* {
     id: 'navigation',
     title: 'Navigation',
     type: 'group',
@@ -42,7 +42,7 @@ const NavigationItems   = [
         classes: 'nav-item',
       }
     ]
-  },
+ }, */
  
   {
     id: 'forms',

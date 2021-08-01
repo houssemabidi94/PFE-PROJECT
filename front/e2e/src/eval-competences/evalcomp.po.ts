@@ -26,12 +26,9 @@ export class evalCompetence {
         browser.actions().mouseDown(element(by.id('submit2'))).perform();
 browser.actions().mouseMove(element(by.id('submit2'))).perform();
         
-for(let i =0;i<5;i++){
+
 element.all(by.css('button[aria-label=\'Next page\']')).get(1).click();
-}
-for(let i =0;i<5;i++){
-    element.all(by.css('button[aria-label=\'Previous page\']')).get(1).click();
-    }
+element.all(by.css('button[aria-label=\'Previous page\']')).get(1).click();
 
   for(let i =0;i<3;i++){
    element.all(by.id('select2')).get(i).click().then(() =>{

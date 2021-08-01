@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Objectif } from 'src/models/objectif';
-import { ObjectifService } from 'src/Services/objectif.service';
+import { Router } from '@angular/router';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-collab-evaluation',
@@ -9,8 +9,13 @@ import { ObjectifService } from 'src/Services/objectif.service';
 })
 export class CollabEvaluationComponent implements OnInit {
 
-  constructor() { }
+userInfo = new User;
+
+  constructor(
+ private router : Router) { }
 
   ngOnInit(): void {
   }
+
+ 
 }

@@ -28,7 +28,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ManagerEvaluationsModule } from 'src/app/manager-evaluations/manager-evaluations.module';
 import { SharedServicesService } from 'src/Services/shared-services.service';
 import { AuthLoginComponent } from './auth-login/auth-login.component';
-import { HomeComponent } from './home/home.component';
 
 import { MaterialModule } from 'src/models/material/material.module';
 import { CollabEvaluationComponent } from './collab-evaluation/collab-evaluation.component';
@@ -52,7 +51,6 @@ import { EvaluationComponent } from 'src/app/manager-evaluations/evaluation/eval
     AutoEvaluationComponent,
     UserProfileComponent,
     AuthLoginComponent,
-    HomeComponent,
     EvaluationComponent,
     CollabEvaluationComponent,
     

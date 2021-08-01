@@ -5,7 +5,6 @@ export class evalManager {
     navigateTo() {
         var elem = element(by.id('navbar'));
         browser.actions().mouseUp(elem).perform();
-        browser.sleep(1000);
         browser.get('/evaluation');
       }
 autoEvaluateManager(){

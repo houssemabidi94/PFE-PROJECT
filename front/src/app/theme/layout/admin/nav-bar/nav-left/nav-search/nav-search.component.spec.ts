@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavSearchComponent } from './nav-search.component';
 
@@ -6,7 +6,7 @@ describe('NavSearchComponent', () => {
   let component: NavSearchComponent;
   let fixture: ComponentFixture<NavSearchComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ NavSearchComponent ]
     })

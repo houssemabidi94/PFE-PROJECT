@@ -320,9 +320,9 @@ public class InitDataBase {
 
 			
 			// init Fonction
-			fonctionRepository.save(new Fonction(1, "collaborateur"));
-			fonctionRepository.save(new Fonction(2, "manager"));
-			fonctionRepository.save(new Fonction(3, "directeur"));
+			fonctionRepository.save(new Fonction("1", "collaborateur"));
+			fonctionRepository.save(new Fonction("2", "manager"));
+			fonctionRepository.save(new Fonction("3", "directeur"));
 			
 			//create users
 			
@@ -336,7 +336,7 @@ public class InitDataBase {
 			newUser.setPassword(bcryptEncoder.encode("manager"));
 			newUser.setMatricule("SOF-1234");
 			newUser.setDateIntegration(new Date(System.currentTimeMillis()));
-			newUser.setFonction(new Fonction(2));
+		//	newUser.setFonction(2);
 			userRepo.save(newUser);
 			
 			//Collab
@@ -349,7 +349,7 @@ public class InitDataBase {
 			newUser2.setPassword(bcryptEncoder.encode("collab"));
 			newUser2.setMatricule("SOF-1234");
 			newUser2.setDateIntegration(new Date(System.currentTimeMillis()));
-			newUser2.setFonction(new Fonction(1));
+			//newUser2.setFonction(1);
 			newUser2.setManager(newUser);
 			userRepo.save(newUser2);
 			
@@ -363,7 +363,7 @@ public class InitDataBase {
 			newUser3.setPassword(bcryptEncoder.encode("collab2"));
 			newUser3.setMatricule("SOF-1234");
 			newUser3.setDateIntegration(new Date(System.currentTimeMillis()));
-			newUser3.setFonction(new Fonction(1));
+			//newUser3.setFonction(1);
 			newUser3.setManager(newUser);
 			userRepo.save(newUser3);
 			

@@ -2,6 +2,7 @@ import { ProtectedPage } from './protected.po';
 import { LoginPage } from '../login/login.po';
 import { browser, protractor } from 'protractor';
 
+
 var origFn = browser.driver.controlFlow().execute;
 browser.driver.controlFlow().execute = function() {
   var args = arguments;

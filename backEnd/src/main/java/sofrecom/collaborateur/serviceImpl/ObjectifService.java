@@ -86,5 +86,11 @@ public class ObjectifService implements IObjectifService {
 		EntretientRepo.save(entretien);
 		ObjectifRepo.save(objectif);
 	}
-
+	
+	@Override
+	public void feedbackObjectif(Objectif objectif, long userId) {
+		Objectif obj = ObjectifRepo.findByIdObjectif(objectif.getId());
+	}
+	
+	
 }

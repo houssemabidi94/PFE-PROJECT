@@ -10,7 +10,7 @@
                         <label>
                             <i class="fas fa-align-justify"> Projet</i>
                         </label>
-                        <textarea class="form-control" placeholder="Saisir le projet ici ..." name="entr.projet" [(ngModel)]="entr.projet"></textarea>
+                        <textarea class="form-control" placeholder="Saisir le projet ici ..." name="entr.projet" [(ngModel)]="entr.projet" id="projet"></textarea>
 
                         <br>
                     </div>
@@ -20,7 +20,7 @@
                             <label>
                                 <i class="fas fa-align-justify"> Formations</i>
                             </label>
-                            <textarea class="form-control" placeholder="Saisir les formations ici ..." name="entr.formations" [(ngModel)]="entr.formations"></textarea>
+                            <textarea class="form-control" placeholder="Saisir les formations ici ..." name="entr.formations" [(ngModel)]="entr.formations" id="formation"></textarea>
     
                             <br>
                         </div>
@@ -33,7 +33,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
         </button>
-        <span id="success2">
+        <span id="successprojet">
                 <strong>
                         <i class="fas fa-thumbs-up"> Les projets sont ajoutés avec success !</i>
                 </strong>
@@ -41,12 +41,12 @@
 </div>
 
 <div class="col-12">
-        <button type="button" (click)="onSubmit()" class="btn btn-success mx-auto d-block" id="save">
+        <button type="button" (click)="onSubmit()" class="btn btn-success mx-auto d-block" id="save2">
                 <i class="feather icon-check-circle"></i>Valider</button>
 </div>
 </div>
 
 <div>
         <button mat-button matStepperPrevious>Retour</button>
-        <button mat-button matStepperNext id="next2">Suivant</button>
+        <button mat-button matStepperNext id="next4">Suivant</button>
       </div>

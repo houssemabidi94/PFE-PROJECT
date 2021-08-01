@@ -17,8 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Fonction {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private String id;
 	
 	@Column(nullable = false)
 	private String libelle;
@@ -33,21 +32,21 @@ public class Fonction {
 		super();
 	}
 
-	public Fonction(long id,String libelle) {
+	public Fonction(String id,String libelle) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 	}
 
-	public Fonction(long id) {
+	public Fonction(String id) {
 		this.id = id;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

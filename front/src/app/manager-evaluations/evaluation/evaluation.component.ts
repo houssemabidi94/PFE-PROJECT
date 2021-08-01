@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class EvaluationComponent implements OnInit {
   show1 = true;
   show2 = false;
-  
+  show3 = false;
   ngOnInit(): void {
 
   }
@@ -24,9 +24,16 @@ export class EvaluationComponent implements OnInit {
   showEquipeEval(){
     this.show1 = true;
     this.show2 = false;
+    this.show3 = false;
       }
       showManagerEval(){
         this.show2 = true;
         this.show1 = false;
+        this.show3 = false;
+      }
+      showFeedback(){
+        this.show3 = true;
+        this.show1 = false;
+        this.show2 = false;
       }
 }

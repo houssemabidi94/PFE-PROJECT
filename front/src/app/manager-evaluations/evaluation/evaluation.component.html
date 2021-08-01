@@ -6,6 +6,10 @@
                 </li>
                 <li class="col text-center font-weight-bold nav-item">
                         <a class="nav-link" type="button" data-toggle="tab" (click)="showManagerEval()" id="autoEval">Mon Eip</a>
+                </li>
+                <li class="col text-center font-weight-bold nav-item">
+                                <a class="nav-link" type="button" data-toggle="tab" (click)="showFeedback()" id="feedback">Feedback</a>
+                        </li>
         </ul>
         <hr>
         <br>
@@ -21,4 +25,10 @@
                 </div>
 
         </div>
+        <div class="row" [hidden]="!show3" >
+                        <div class="col-12">
+                                <app-feedback></app-feedback>
+                        </div>
+        
+                </div>
 </app-card>
