@@ -1,0 +1,34 @@
+<app-card cardTitle="Evaluation" [options]="false" blockClass="table-border-style">
+
+        <ul class="row nav nav-tabs" id="myTab" role="tablist">
+                <li class="col text-center font-weight-bold nav-item">
+                        <a class="nav-link active" type="button" data-toggle="tab" (click)="showEquipeEval()" id="eip">Eips Mon Equipe</a>
+                </li>
+                <li class="col text-center font-weight-bold nav-item">
+                        <a class="nav-link" type="button" data-toggle="tab" (click)="showManagerEval()" id="autoEval">Mon Eip</a>
+                </li>
+                <li class="col text-center font-weight-bold nav-item">
+                                <a class="nav-link" type="button" data-toggle="tab" (click)="showFeedback()" id="feedback">Feedback</a>
+                        </li>
+        </ul>
+        <hr>
+        <br>
+
+        <div class="row" [hidden]="!show1" >
+                <div class="col-xl-12">
+                        <app-eip-equipe></app-eip-equipe>
+                </div>
+        </div>
+        <div class="row" [hidden]="!show2" >
+                <div class="col-12">
+                        <app-auto-evaluation></app-auto-evaluation>
+                </div>
+
+        </div>
+        <div class="row" [hidden]="!show3" >
+                        <div class="col-12">
+                                <app-feedback></app-feedback>
+                        </div>
+        
+                </div>
+</app-card>

@@ -1,0 +1,21 @@
+<ul class="navbar-nav">
+  <li>
+    <div class="dropdown drp-user" ngbDropdown placement='auto'>
+      <a href="javascript:" ngbDropdownToggle data-toggle="dropdown"  id="liste">
+        <i class="icon feather icon-settings"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right profile-notification" ngbDropdownMenu>
+        <div class="pro-head">
+          <img src="assets/images/user/user-3.png" class="img-radius" alt="User-Profile-Image">
+          <span class="text-capitalize">{{user.username}}</span>
+          <a href="javascript:" class="dud-logout" title="Logout" (click)="logout()" id="logout">
+            <i class="feather icon-log-out"></i>
+          </a>
+        </div>
+        <ul class="pro-body">
+          <li><a href="javascript:" class="dropdown-item" routerLink="/profile"><i class="feather icon-user"></i> Profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </li>
+</ul>

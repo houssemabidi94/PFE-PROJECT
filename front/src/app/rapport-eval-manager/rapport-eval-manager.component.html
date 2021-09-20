@@ -1,0 +1,145 @@
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title"><i class="fas fa-id-badge"> Rapport d'évaluation du manager</i></h4>
+                        <div class="row col-lg-12 mt-3 border border-dark rounded">
+
+                            <div class="mt-3 col-lg-12">
+                                    <i class="fas fa-bars"> Informations génerales sur le Manager :</i>
+                            </div>
+                    
+                            <div class="row col-lg-12 mt-3">
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <label>
+                                                            <i class="fas fa-user"> Nom et prénom :</i>
+                                                    </label>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <u class="text-capitalize">{{user.fullname}}</u>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <label>
+                                                            <i class="fas fa-at"> Email : </i>
+                                                    </label>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <u>{{user.email}}</u>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <label>
+                                                            <i class="fas fa-briefcase"> Fonction : </i>
+                                                    </label>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <u class="text-capitalize">{{user.fonction.libelle}}</u>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <label>
+                                                            <i class="fas fa-calendar-alt"> Date Intégration :</i>
+                                                    </label>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <u class="text-capitalize">{{user.dateIntegration}}</u>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <label>
+                                                            <i class="fas fa-id-card"> Matricule :</i>
+                                                    </label>
+                                            </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                            <div class="form-group">
+                                                    <u class="text-capitalize">{{user.matricule}}</u>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                    <div class="card-body">
+                            <h5>Evaluation des objectifs</h5>
+                        <br>
+                        <table>
+                            <tbody>
+                            <tr class="col-md-12">
+                            <th class="col-md-4">Designation</th>
+                            <th class="col-md-4">Auto Evaluation</th>
+                            <th class="col-md-4">Remarque</th>
+                            </tr>
+                            <tr *ngFor="let objecifs of objectif" class="col-md-12">
+                            <td class="col-md-4">{{objecifs.designation}}</td>
+                            <td class="col-md-4">{{objecifs.autoEvaluation}}</td>
+                            <td class="col-md-4">{{objecifs.remarque}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <br>
+                            <h5>Les nouveaux objectifs</h5>
+                            <br>
+                            <table>
+                                <tbody>
+                                <tr class="col-md-12">
+                                <th class="col-md-4">Num</th>
+                                <th class="col-md-8">Designation</th>
+                                </tr>
+                                <tr *ngFor="let newobj of newobjectifs ;let i = index" class="col-md-12">
+                                <td>{{i+1}}</td>
+                                <td class="col-md-8">{{newobj.designation}}</td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                <br>
+                                <h5>Evaluation des compétences</h5>
+                                <br>
+                                <table>
+                                        <tbody>
+                                        <tr class="col-md-12">
+                                        <th class="col-md-2">Num</th>
+                                        <th class="col-md-10">Evaluation</th>
+                                        </tr>
+                                        <tr *ngFor="let comp of evalcomp ;let i = index" class="col-md-12">
+                                       <td>{{i+1}}</td>
+                                        <td>{{comp}}</td>
+                                        </tr>
+                                        </tbody>
+                                        </table>
+                                <br>
+                                <h5>Projet professionnel</h5>
+                                <br>
+                                <p>{{entretien.projet}}</p>
+                                <br>
+                                <h5>Les formations</h5>
+                                <br>
+                                <p>{{entretien.formations}}</p>
+                                <br>
+                                <h5>Remarque</h5>
+                                <br>
+                                <p>{{entretien.remarque}}</p>
+                                <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  
+  

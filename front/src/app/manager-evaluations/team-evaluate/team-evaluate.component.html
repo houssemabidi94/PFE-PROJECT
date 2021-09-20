@@ -1,0 +1,130 @@
+<div class="row">
+        <div class="col-xl-12">
+
+                <app-user-profile-card></app-user-profile-card>
+                <br>
+                <br>
+
+
+
+
+                <div class="row" *ngIf="user">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                                <div class="card">
+                                        <div class="card-body">
+                                                <p>Evaluation des objectifs de
+                                                        <span class="font-weight-bold text-capitalize">{{user.fullname}}</span>
+                                                </p>
+                                                <div [hidden]="objectifs.length">
+                                                        <div class="alert alert-warning" role="alert">
+                                                                Pas d'objectifs à evaluer pour ce collaborateur !
+                                                        </div>
+
+                                                </div>
+
+
+                                                <div [hidden]="!objectifs.length">
+
+                                                        <mat-form-field>
+                                                                <mat-label>Recherche</mat-label>
+                                                                <input matInput (keyup)="applyFilter($event)" placeholder="..." #input>
+                                                        </mat-form-field>
+
+                                                        <div class="mat-elevation-z8">
+                                                                <table mat-table [dataSource]="dataSource" matSort>
+
+                                                                        <!-- Num Column -->
+                                                                        <ng-container matColumnDef="position">
+                                                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. </th>
+                                                                                <td mat-cell *matCellDef="let i = index">
+                                                                                        {{this.paginator.pageIndex == 0 ? i + 1 : 1 + i + this.paginator.pageIndex * this.paginator.pageSize}}
+                                                                                </td>
+                                                                        </ng-container>
+
+                                                                        <!-- designation Column -->
+                                                                        <ng-container matColumnDef="designation">
+                                                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+                                                                                <td mat-cell *matCellDef="let row"> {{row.designation}} </td>
+                                                                        </ng-container>
+
+                                                                        <!-- autoEvaluation Column -->
+                                                                        <ng-container matColumnDef="autoEvaluation">
+                                                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Auto Evaluation </th>
+                                                                                <td mat-cell *matCellDef="let row"><span *ngIf = "!row.autoEvaluation"> En attente ...</span> {{row.autoEvaluation}} </td>
+                                                                        </ng-container>
+
+                                                                        <!-- Evaluation Column -->
+                                                                        <ng-container matColumnDef="evaluation">
+                                                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Evaluation </th>
+                                                                                <td mat-cell *matCellDef="let objectif">
+                                                                                        <mat-form-field appearance="fill" style="width:100%" *ngIf= "objectif.autoEvaluation" >
+                                                                                                <mat-label>Evaluer</mat-label>              
+                                                                                                
+                                                                                                <mat-select (selectionChange)="change(objectif)" name={{objectif.evaluation}}{{objectif.designation}} [(ngModel)]="objectif.evaluation" id="select">
+                                                                                                                <mat-option [value]="objectif.autoEvaluation" selected>
+                                                                                                                    {{ objectif.autoEvaluation }}
+                                                                                                                    </mat-option>
+                                                                                                                <mat-option *ngFor="let eval of evaluations" [value]="eval.designation" ng-reflect-value = "eval.designation">
+                                                                                                                {{ eval.designation }}
+                                                                                                                </mat-option>
+                                                                                                              </mat-select>
+                                                                                                      </mat-form-field>                                                                 
+                                                                                                </td>
+                                                                        </ng-container>
+
+                                                                        <!-- commentaire Column -->
+
+                                                                        <ng-container matColumnDef="remarque">
+                                                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Remarque </th>
+                                                                                <td mat-cell *matCellDef="let objectif" [hidden]= "!objectif.autoEvaluation">
+                                                                                        <textarea  (change)="change(objectif)" class="form-control" placeholder="remarque ici" value={{objectif.remarque}} [(ngModel)]="objectif.remarque"
+                                                                                                rows="1" id="comm">
+                                                                                                <!-- -->
+                                                                                                    </textarea>
+                                                                                </td>
+                                                                        </ng-container>
+
+
+                                                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                                                        <!-- Row shown when there is no matching data. -->
+                                                                        <tr class="mat-row" *matNoDataRow>
+                                                                                <td class="mat-cell" colspan="4">Aucun résultat pour "{{input.value}}"</td>
+                                                                        </tr>
+                                                                </table>
+
+                                                                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+                                                        </div>
+
+                                                        <div class="alert alert-success alert-dismissible fade show col-6 mt-3" role="alert" *ngIf="success">
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                                <span id="success">
+                                                                        <strong>
+                                                                                <i class="fas fa-thumbs-up"> Votre évaluation a été sauvgarder avec success !</i>
+                                                                        </strong>
+                                                                </span>
+                                                        </div>
+                                                        <button type="button" (click)="onSubmit()" class="btn btn-success mx-auto d-block mt-2" id="submit">
+                                                                <i class="feather icon-check-circle"></i>Valider</button>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+
+
+
+                </div>
+
+
+
+                <div>
+
+                        <button mat-button matStepperNext id="next" (click)="onSubmit()">Suivant</button>
+                </div>
+
+        </div>
+</div>

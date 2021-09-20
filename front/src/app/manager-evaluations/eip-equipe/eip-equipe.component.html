@@ -1,0 +1,65 @@
+<div [hidden] ="entretient.length">
+        <div class="alert alert-warning col-6" role="alert">
+                        <i class="fas fa-exclamation-triangle">    Vous n'avez pas des EIPs à evaluer !</i>
+        </div>
+
+</div>
+
+<div [hidden] ="!entretient.length">
+        <div class="alert alert-secondary alert-dismissible fade show col-6" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <span> <strong><i class="far fa-lightbulb">  Veuillez choisir un Collaborateur pour évaluer ses objectifs .</i></strong></span>
+                </div>
+                                      
+                                
+
+        <mat-form-field>
+                <mat-label>Recherche</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="..." #input>
+              </mat-form-field>
+              
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+              
+                  <!-- Num Column -->
+                  <ng-container matColumnDef="position">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Num. </th>
+                      <td mat-cell *matCellDef="let i = index">
+                      {{this.paginator.pageIndex == 0 ? i + 1 : 1 + i + this.paginator.pageIndex * this.paginator.pageSize}}
+                      </td>
+                    </ng-container>
+              
+                  
+                  <ng-container matColumnDef="Collaborateur" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Collaborateur </th>
+                    <td mat-cell *matCellDef="let row"> <span id="collab">{{row.user.fullname}}</span> </td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="Compagne">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Compagne </th>
+                        <td mat-cell *matCellDef="let row"> {{row.campagne.idCampagne}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                            <td mat-cell *matCellDef="let row"><span [hidden]="row.status">ATTENTE_EVALUATION</span> 
+                                <span [hidden]="!row.status">{{row.status}}</span> </td>
+                          </ng-container>
+                 
+                            
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="cursor: pointer;" (click)="getCollaborateur(row)" title="Cliquer pour l'évaluer"></tr>
+              
+                  <!-- Row shown when there is no matching data. -->
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">Aucun résultat pour "{{input.value}}"</td>
+                  </tr>
+                </table>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+              </div>
+              
+                </div>

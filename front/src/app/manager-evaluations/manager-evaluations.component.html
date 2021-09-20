@@ -1,0 +1,19 @@
+<app-card cardTitle="Mon equipe EIPs" [options]="false" blockClass="table-border-style">
+<mat-horizontal-stepper labelPosition="bottom" [linear]="isLinear" #stepper>
+    <mat-step  label="Evaluation">
+            <app-team-evaluate></app-team-evaluate>
+      </mat-step>
+        <mat-step label="Fixation des nouveaux objectifs" id="step2">
+              <app-add-new-objective></app-add-new-objective>
+        </mat-step>
+        <mat-step label="Evaluation des compétences">
+            <app-evaluation-competence></app-evaluation-competence>
+        </mat-step>
+        <mat-step label="Projet Professionel">
+            <app-projet-professionel></app-projet-professionel>
+              </mat-step>
+              <mat-step label="Clôture">
+                  <app-cloture></app-cloture>
+                  </mat-step>
+      </mat-horizontal-stepper>
+    </app-card>

@@ -1,0 +1,72 @@
+ <div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title"><i class="fas fa-id-badge"> Mon Profile</i></h4>
+                        <p class="card-category">Vos Informations </p>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0"><i class="fas fa-user-alt">   Full Name</i></h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary text-capitalize">
+                            {{user.fullname}}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0"><i class="fas fa-at">   Email</i></h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary text-capitalize">
+                              {{user.email}}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0"><i class="fas fa-user">   Username</i></h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary text-capitalize">
+                              {{user.username}}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0"><i class="fas fa-address-card">   Matricule</i></h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary text-capitalize">
+                              {{user.matricule}}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0"><i class="fas fa-calendar-alt">   Date d'integration</i></h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                              {{user.dateIntegration}}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0"><i class="fas fa-briefcase">  Fonction</i></h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary text-capitalize">
+                              {{user.fonction.libelle}}
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  
+  
